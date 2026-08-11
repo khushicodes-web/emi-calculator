@@ -357,14 +357,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
     transform: rotate(180deg);
 }
 
-/* --- GROWW EXACT LIGHT TINTED MONTHLY BOX & BIGGER NUMBERS --- */
+/* --- GROWW EXACT LIGHT TINTED MONTHLY BOX & MOBILE SCROLL FIX --- */
 .month-table-wrapper {
     display: none;
-    padding: 18px 24px;
+    padding: 15px;
     margin: 10px 0 20px 0;
     background-color: #f4fbf7; /* Exact Groww Light Tint Background */
     border-radius: 12px;
     border: 1px solid #e1f5ee;
+    
+    /* MOBILE SCROLLBAR FIX */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .year-block.active .month-table-wrapper {
@@ -373,23 +377,26 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .amort-table {
     width: 100%;
+    min-width: 500px; /* Ensures text doesn't squeeze on small mobile screens */
     border-collapse: collapse;
 }
 
 .amort-table th {
     text-align: left;
-    padding: 14px 12px;
+    padding: 12px 10px;
     color: #64748b;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     border-bottom: 1px solid #d1eae1;
+    white-space: nowrap;
 }
 
 .amort-table td {
-    padding: 15px 12px;
+    padding: 12px 10px;
     color: #222529; /* Exact dark readable text */
     font-weight: 500;
-    font-size: 15px; /* Bigger Groww Style Numbers */
+    font-size: 14px;
+    white-space: nowrap;
 }
 
 .amort-table tbody tr {
@@ -398,6 +405,21 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .amort-table tbody tr:hover {
     background-color: #e8f7f1;
+}
+
+/* Scrollbar Customization for Mobile */
+.month-table-wrapper::-webkit-scrollbar {
+    height: 4px;
+}
+
+.month-table-wrapper::-webkit-scrollbar-track {
+    background: #e1f5ee;
+    border-radius: 10px;
+}
+
+.month-table-wrapper::-webkit-scrollbar-thumb {
+    background: #00d09c;
+    border-radius: 10px;
 }
 
 /* Groww Green Load More Button */
@@ -420,4 +442,35 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .btn-load-more:hover {
     background-color: #00b889;
+}
+
+/* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    .main-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .left, .right {
+        padding: 20px;
+    }
+
+    .schedule-section {
+        padding: 15px;
+    }
+
+    .month-table-wrapper {
+        padding: 10px;
+    }
 }
