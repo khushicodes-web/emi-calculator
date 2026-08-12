@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- html2pdf Library for PDF Download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -25,7 +27,7 @@
     </nav>
 
     <!-- Main Container -->
-    <div class="container">
+    <div class="container" id="printableArea">
         <!-- Main Section -->
         <div class="main-section">
             <!-- Left Side Inputs -->
@@ -110,6 +112,12 @@
                         <span>Total Amount Payable</span>
                         <strong id="paymentText">₹0.00</strong>
                     </div>
+                </div>
+
+                <!-- Action Buttons: PDF Download & Share -->
+                <div style="display: flex; gap: 10px; margin-top: 15px; margin-bottom: 15px;">
+                    <button onclick="downloadPDF()" style="flex: 1; padding: 10px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">📥 Download PDF</button>
+                    <button onclick="shareCalculator()" style="flex: 1; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">🔗 Share</button>
                 </div>
 
                 <!-- Amortization Header -->
