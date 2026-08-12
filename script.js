@@ -131,7 +131,7 @@ function switchLoan(type) {
     calculateEMI();
 }
 
-// Chart.js Setup
+// Chart.js Setup (With Bright White Text Labels)
 function updateChart(principal, interest) {
     let ctx = document.getElementById("myChart").getContext("2d");
 
@@ -155,10 +155,10 @@ function updateChart(principal, interest) {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        color: '#333333',
+                        color: '#ffffff', // <-- White color text
                         boxWidth: 12,
                         padding: 15,
-                        font: { size: 11 }
+                        font: { size: 12, weight: 'bold' }
                     }
                 }
             }
@@ -312,19 +312,6 @@ function renderSchedule() {
 function loadMoreYears() {
     visibleYearsCount += 5;
     renderSchedule();
-}
-
-// --- PDF DOWNLOAD FUNCTION ---
-function downloadPDF() {
-    const element = document.getElementById('printableArea');
-    const opt = {
-        margin:       0.3,
-        filename:     'EMI_Calculation_Report.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-    html2pdf().set(opt).from(element).save();
 }
 
 // --- SHARE FUNCTION ---
