@@ -155,7 +155,7 @@ function updateChart(principal, interest) {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        color: '#ffffff',
+                        color: '#333333',
                         boxWidth: 12,
                         padding: 15,
                         font: { size: 11 }
@@ -312,6 +312,33 @@ function renderSchedule() {
 function loadMoreYears() {
     visibleYearsCount += 5;
     renderSchedule();
+}
+
+// --- PDF DOWNLOAD FUNCTION ---
+function downloadPDF() {
+    const element = document.getElementById('printableArea');
+    const opt = {
+        margin:       0.3,
+        filename:     'EMI_Calculation_Report.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+// --- SHARE FUNCTION ---
+function shareCalculator() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'EMI Calculator',
+            text: 'Check out this awesome interactive EMI Calculator!',
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard! You can share it anywhere.');
+    }
 }
 
 // Initial Call
