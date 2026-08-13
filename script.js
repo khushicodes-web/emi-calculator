@@ -16,16 +16,20 @@ let chart;
 let visibleYearsCount = 5; // Initial 5 years view
 let calculatedAmortData = []; // Calculated schedule data
 
-// Currency Settings Configuration
+// World Currencies & Locales Database (XE Style Dropdown Support)
 const currencyConfig = {
     INR: { symbol: "₹", locale: "en-IN" },
     USD: { symbol: "$", locale: "en-US" },
+    GBP: { symbol: "£", locale: "en-GB" },
     EUR: { symbol: "€", locale: "de-DE" },
-    GBP: { symbol: "£", locale: "en-GB" }
+    CAD: { symbol: "C$", locale: "en-CA" },
+    AUD: { symbol: "A$", locale: "en-AU" },
+    AED: { symbol: "AED ", locale: "ar-AE" },
+    SAR: { symbol: "SAR ", locale: "ar-SA" },
+    JPY: { symbol: "¥", locale: "ja-JP" }
 };
 
 let currentCurrency = "INR";
-
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 // Loan Presets
@@ -38,24 +42,57 @@ const loanData = {
 
 // Formatting Helper with Selected Currency
 function formatCurrency(val) {
-    const config = currencyConfig[currentCurrency];
+    const config = currencyConfig[currentCurrency] || currencyConfig.INR;
     return config.symbol + Number(val).toLocaleString(config.locale, { maximumFractionDigits: 0 });
 }
 
-// Change Currency Function (Triggered by Dropdown)
-function changeCurrency() {
-    const selector = document.getElementById("currencySelect");
-    if (selector) {
-        currentCurrency = selector.value;
+// --- CUSTOM XE-STYLE DROPDOWN LOGIC ---
+function toggleCurrencyMenu() {
+    const menu = document.getElementById("currencyMenu");
+    if (menu) {
+        menu.classList.toggle("show");
     }
-    
-    // Update all static currency symbol labels on UI
+}
+
+function selectCurrency(code, flag, labelText) {
+    currentCurrency = code;
+
+    // Update Button Text & Flag UI
+    const flagElem = document.getElementById("selectedFlag");
+    const codeElem = document.getElementById("selectedCode");
+    if (flagElem) flagElem.innerText = flag;
+    if (codeElem) codeElem.innerText = code;
+
+    // Update Checkmark in floating list
+    document.querySelectorAll(".dropdown-item").forEach(item => {
+        item.classList.remove("active");
+    });
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add("active");
+    }
+
+    // Close Floating Menu
+    const menu = document.getElementById("currencyMenu");
+    if (menu) menu.classList.remove("show");
+
+    // Update Symbol Labels on Input Boxes
+    const symbol = currencyConfig[code] ? currencyConfig[code].symbol : "₹";
     document.querySelectorAll('.currSymbol').forEach(el => {
-        el.innerText = currencyConfig[currentCurrency].symbol;
+        el.innerText = symbol;
     });
 
     calculateEMI();
 }
+
+// Close Dropdown Menu when clicking outside
+window.onclick = function(event) {
+    if (!event.target.closest('.custom-dropdown-container')) {
+        const menu = document.getElementById("currencyMenu");
+        if (menu && menu.classList.contains('show')) {
+            menu.classList.remove('show');
+        }
+    }
+};
 
 // --- GROWW GREEN DYNAMIC SLIDER FILL FUNCTION ---
 function updateSliderTrack(slider) {
@@ -344,8 +381,8 @@ function loadMoreYears() {
 function shareCalculator() {
     if (navigator.share) {
         navigator.share({
-            title: 'EMI Calculator',
-            text: 'Check out this awesome interactive EMI Calculator!',
+            title: 'Global EMI Calculator',
+            text: 'Check out this awesome interactive Global EMI Calculator!',
             url: window.location.href
         }).catch(console.error);
     } else {
