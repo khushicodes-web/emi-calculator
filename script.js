@@ -16,12 +16,12 @@ let chart;
 let visibleYearsCount = 5; // Initial 5 years view
 let calculatedAmortData = []; // Calculated schedule data
 
-// 19 World Currencies & Locales Database (XE Style Dropdown Support)
+// 19 World Currencies & Locales Database
 const currencyConfig = {
     INR: { symbol: "₹", locale: "en-IN" },
     USD: { symbol: "$", locale: "en-US" },
-    EUR: { symbol: "€", locale: "de-DE" },
     GBP: { symbol: "£", locale: "en-GB" },
+    EUR: { symbol: "€", locale: "de-DE" },
     CAD: { symbol: "C$", locale: "en-CA" },
     AUD: { symbol: "A$", locale: "en-AU" },
     AED: { symbol: "AED ", locale: "ar-AE" },
@@ -56,7 +56,7 @@ function formatCurrency(val) {
     return config.symbol + Number(val).toLocaleString(config.locale, { maximumFractionDigits: 0 });
 }
 
-// --- CUSTOM XE-STYLE DROPDOWN LOGIC ---
+// --- CUSTOM XE-STYLE DROPDOWN LOGIC (HD IMAGE FLAGS SUPPORT) ---
 function toggleCurrencyMenu() {
     const menu = document.getElementById("currencyMenu");
     if (menu) {
@@ -64,16 +64,16 @@ function toggleCurrencyMenu() {
     }
 }
 
-function selectCurrency(code, flag, labelText) {
+function selectCurrency(code, flagImgUrl) {
     currentCurrency = code;
 
-    // Update Button Text & Flag UI
-    const flagElem = document.getElementById("selectedFlag");
+    // Update Button Flag Image & Code Text UI
+    const flagElem = document.getElementById("selectedFlagImg");
     const codeElem = document.getElementById("selectedCode");
-    if (flagElem) flagElem.innerText = flag;
+    if (flagElem) flagElem.src = flagImgUrl;
     if (codeElem) codeElem.innerText = code;
 
-    // Update Checkmark in floating list
+    // Update Active Checkmark in floating list
     document.querySelectorAll(".dropdown-item").forEach(item => {
         item.classList.remove("active");
     });
@@ -85,7 +85,7 @@ function selectCurrency(code, flag, labelText) {
     const menu = document.getElementById("currencyMenu");
     if (menu) menu.classList.remove("show");
 
-    // Update Symbol Labels on Input Boxes
+    // Update Symbol Labels on UI
     const symbol = currencyConfig[code] ? currencyConfig[code].symbol : "₹";
     document.querySelectorAll('.currSymbol').forEach(el => {
         el.innerText = symbol;
