@@ -26,69 +26,107 @@
         <!-- Custom XE-Style Floating Country/Currency Picker Trigger -->
         <div class="custom-dropdown-container" style="margin-left: auto; position: relative;">
             <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()">
-                <span id="selectedFlag">🇮🇳</span>
+                <img id="selectedFlagImg" src="https://flagcdn.com/w20/in.png" alt="India Flag" class="btn-flag-img">
                 <span id="selectedCode" style="font-weight: bold; margin-left: 4px;">INR</span>
                 <span style="font-size: 10px; margin-left: 4px;">▼</span>
             </button>
 
-            <!-- Floating Card Popup List with 19 Countries -->
+            <!-- Floating Card Popup List with Real HD Flags -->
             <div class="custom-dropdown-menu" id="currencyMenu">
-                <div class="dropdown-item active" onclick="selectCurrency('INR', '🇮🇳', 'India (₹)')">
-                    <span class="flag-icon">🇮🇳</span> <span class="country-name">India (₹ INR)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item active" onclick="selectCurrency('INR', 'https://flagcdn.com/w20/in.png')">
+                    <img src="https://flagcdn.com/w20/in.png" class="flag-img" alt="India">
+                    <span class="country-name">India (₹ INR)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('USD', '🇺🇸', 'USA ($)')">
-                    <span class="flag-icon">🇺🇸</span> <span class="country-name">USA ($ USD)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('USD', 'https://flagcdn.com/w20/us.png')">
+                    <img src="https://flagcdn.com/w20/us.png" class="flag-img" alt="USA">
+                    <span class="country-name">USA ($ USD)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('EUR', '🇪🇺', 'Europe (€)')">
-                    <span class="flag-icon">🇪🇺</span> <span class="country-name">Europe (€ EUR)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('EUR', 'https://flagcdn.com/w20/eu.png')">
+                    <img src="https://flagcdn.com/w20/eu.png" class="flag-img" alt="Europe">
+                    <span class="country-name">Europe (€ EUR)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('GBP', '🇬🇧', 'UK (£)')">
-                    <span class="flag-icon">🇬🇧</span> <span class="country-name">UK (£ GBP)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('GBP', 'https://flagcdn.com/w20/gb.png')">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-img" alt="UK">
+                    <span class="country-name">UK (£ GBP)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('CAD', '🇨🇦', 'Canada (C$)')">
-                    <span class="flag-icon">🇨🇦</span> <span class="country-name">Canada (C$ CAD)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('CAD', 'https://flagcdn.com/w20/ca.png')">
+                    <img src="https://flagcdn.com/w20/ca.png" class="flag-img" alt="Canada">
+                    <span class="country-name">Canada (C$ CAD)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('AUD', '🇦🇺', 'Australia (A$)')">
-                    <span class="flag-icon">🇦🇺</span> <span class="country-name">Australia (A$ AUD)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('AUD', 'https://flagcdn.com/w20/au.png')">
+                    <img src="https://flagcdn.com/w20/au.png" class="flag-img" alt="Australia">
+                    <span class="country-name">Australia (A$ AUD)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('AED', '🇦🇪', 'UAE (AED)')">
-                    <span class="flag-icon">🇦🇪</span> <span class="country-name">UAE (AED)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('AED', 'https://flagcdn.com/w20/ae.png')">
+                    <img src="https://flagcdn.com/w20/ae.png" class="flag-img" alt="UAE">
+                    <span class="country-name">UAE (AED)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('SAR', '🇸🇦', 'Saudi Arabia (SAR)')">
-                    <span class="flag-icon">🇸🇦</span> <span class="country-name">Saudi Arabia (SAR)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('SAR', 'https://flagcdn.com/w20/sa.png')">
+                    <img src="https://flagcdn.com/w20/sa.png" class="flag-img" alt="Saudi Arabia">
+                    <span class="country-name">Saudi Arabia (SAR)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('JPY', '🇯🇵', 'Japan (¥)')">
-                    <span class="flag-icon">🇯🇵</span> <span class="country-name">Japan (¥ JPY)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('JPY', 'https://flagcdn.com/w20/jp.png')">
+                    <img src="https://flagcdn.com/w20/jp.png" class="flag-img" alt="Japan">
+                    <span class="country-name">Japan (¥ JPY)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('CNY', '🇨🇳', 'China (¥)')">
-                    <span class="flag-icon">🇨🇳</span> <span class="country-name">China (¥ CNY)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('CNY', 'https://flagcdn.com/w20/cn.png')">
+                    <img src="https://flagcdn.com/w20/cn.png" class="flag-img" alt="China">
+                    <span class="country-name">China (¥ CNY)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('KRW', '🇰🇷', 'South Korea (₩)')">
-                    <span class="flag-icon">🇰🇷</span> <span class="country-name">South Korea (₩ KRW)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('KRW', 'https://flagcdn.com/w20/kr.png')">
+                    <img src="https://flagcdn.com/w20/kr.png" class="flag-img" alt="South Korea">
+                    <span class="country-name">South Korea (₩ KRW)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('SGD', '🇸🇬', 'Singapore (S$)')">
-                    <span class="flag-icon">🇸🇬</span> <span class="country-name">Singapore (S$ SGD)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('SGD', 'https://flagcdn.com/w20/sg.png')">
+                    <img src="https://flagcdn.com/w20/sg.png" class="flag-img" alt="Singapore">
+                    <span class="country-name">Singapore (S$ SGD)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('NZD', '🇳🇿', 'New Zealand (NZ$)')">
-                    <span class="flag-icon">🇳🇿</span> <span class="country-name">New Zealand (NZ$ NZD)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('NZD', 'https://flagcdn.com/w20/nz.png')">
+                    <img src="https://flagcdn.com/w20/nz.png" class="flag-img" alt="New Zealand">
+                    <span class="country-name">New Zealand (NZ$ NZD)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('BRL', '🇧🇷', 'Brazil (R$)')">
-                    <span class="flag-icon">🇧🇷</span> <span class="country-name">Brazil (R$ BRL)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('BRL', 'https://flagcdn.com/w20/br.png')">
+                    <img src="https://flagcdn.com/w20/br.png" class="flag-img" alt="Brazil">
+                    <span class="country-name">Brazil (R$ BRL)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('RUB', '🇷🇺', 'Russia (₽)')">
-                    <span class="flag-icon">🇷🇺</span> <span class="country-name">Russia (₽ RUB)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('RUB', 'https://flagcdn.com/w20/ru.png')">
+                    <img src="https://flagcdn.com/w20/ru.png" class="flag-img" alt="Russia">
+                    <span class="country-name">Russia (₽ RUB)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('MXN', '🇲🇽', 'Mexico ($)')">
-                    <span class="flag-icon">🇲🇽</span> <span class="country-name">Mexico ($ MXN)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('MXN', 'https://flagcdn.com/w20/mx.png')">
+                    <img src="https://flagcdn.com/w20/mx.png" class="flag-img" alt="Mexico">
+                    <span class="country-name">Mexico ($ MXN)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('ZAR', '🇿🇦', 'South Africa (R)')">
-                    <span class="flag-icon">🇿🇦</span> <span class="country-name">South Africa (R ZAR)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('ZAR', 'https://flagcdn.com/w20/za.png')">
+                    <img src="https://flagcdn.com/w20/za.png" class="flag-img" alt="South Africa">
+                    <span class="country-name">South Africa (R ZAR)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('CHF', '🇨🇭', 'Switzerland (CHF)')">
-                    <span class="flag-icon">🇨🇭</span> <span class="country-name">Switzerland (CHF)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('CHF', 'https://flagcdn.com/w20/ch.png')">
+                    <img src="https://flagcdn.com/w20/ch.png" class="flag-img" alt="Switzerland">
+                    <span class="country-name">Switzerland (CHF)</span>
+                    <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('SEK', '🇸🇪', 'Sweden (kr)')">
-                    <span class="flag-icon">🇸🇪</span> <span class="country-name">Sweden (kr SEK)</span> <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('SEK', 'https://flagcdn.com/w20/se.png')">
+                    <img src="https://flagcdn.com/w20/se.png" class="flag-img" alt="Sweden">
+                    <span class="country-name">Sweden (kr SEK)</span>
+                    <span class="checkmark">✓</span>
                 </div>
             </div>
         </div>
