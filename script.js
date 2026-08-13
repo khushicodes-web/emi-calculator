@@ -16,17 +16,27 @@ let chart;
 let visibleYearsCount = 5; // Initial 5 years view
 let calculatedAmortData = []; // Calculated schedule data
 
-// World Currencies & Locales Database (XE Style Dropdown Support)
+// 19 World Currencies & Locales Database (XE Style Dropdown Support)
 const currencyConfig = {
     INR: { symbol: "₹", locale: "en-IN" },
     USD: { symbol: "$", locale: "en-US" },
-    GBP: { symbol: "£", locale: "en-GB" },
     EUR: { symbol: "€", locale: "de-DE" },
+    GBP: { symbol: "£", locale: "en-GB" },
     CAD: { symbol: "C$", locale: "en-CA" },
     AUD: { symbol: "A$", locale: "en-AU" },
     AED: { symbol: "AED ", locale: "ar-AE" },
     SAR: { symbol: "SAR ", locale: "ar-SA" },
-    JPY: { symbol: "¥", locale: "ja-JP" }
+    JPY: { symbol: "¥", locale: "ja-JP" },
+    CNY: { symbol: "¥", locale: "zh-CN" },
+    KRW: { symbol: "₩", locale: "ko-KR" },
+    SGD: { symbol: "S$", locale: "en-SG" },
+    NZD: { symbol: "NZ$", locale: "en-NZ" },
+    BRL: { symbol: "R$", locale: "pt-BR" },
+    RUB: { symbol: "₽", locale: "ru-RU" },
+    MXN: { symbol: "$", locale: "es-MX" },
+    ZAR: { symbol: "R ", locale: "en-ZA" },
+    CHF: { symbol: "CHF ", locale: "de-CH" },
+    SEK: { symbol: "kr ", locale: "sv-SE" }
 };
 
 let currentCurrency = "INR";
