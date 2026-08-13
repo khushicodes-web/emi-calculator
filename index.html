@@ -22,6 +22,15 @@
             <li class="tab-link" onclick="switchLoan('personal')">Personal Loan</li>
             <li class="tab-link" onclick="switchLoan('education')">Education Loan</li>
         </ul>
+        <!-- Currency Switcher Dropdown -->
+        <div class="currency-selector" style="margin-left: auto; padding-right: 15px;">
+            <select id="currencySelect" onchange="changeCurrency()" style="padding: 6px 12px; border-radius: 6px; background: #1e293b; color: white; border: 1px solid #475569; font-weight: bold; cursor: pointer;">
+                <option value="INR">₹ INR</option>
+                <option value="USD">$ USD</option>
+                <option value="EUR">€ EUR</option>
+                <option value="GBP">£ GBP</option>
+            </select>
+        </div>
     </nav>
 
     <!-- Main Container -->
@@ -39,16 +48,16 @@
                     <!-- Loan Amount -->
                     <div class="input-group">
                         <div class="label-row">
-                            <label>LOAN AMOUNT (₹)</label>
+                            <label>LOAN AMOUNT (<span class="currSymbol">₹</span>)</label>
                             <div class="input-wrapper">
-                                <span>₹</span>
+                                <span class="currSymbol">₹</span>
                                 <input type="number" id="loanValue" class="value-input" value="300000">
                             </div>
                         </div>
                         <input type="range" id="loan" min="10000" max="10000000" step="10000" value="300000">
                         <div class="range-labels">
-                            <span>₹10K</span>
-                            <span>₹1Cr+</span>
+                            <span>10K</span>
+                            <span>1Cr+</span>
                         </div>
                     </div>
 
