@@ -13,15 +13,15 @@ const interestText = document.getElementById("interestText");
 const paymentText = document.getElementById("paymentText");
 
 let chart;
-let visibleYearsCount = 5; // Initial 5 years view
-let calculatedAmortData = []; // Calculated schedule data
+let visibleYearsCount = 5; 
+let calculatedAmortData = []; 
 
-// 19 World Currencies & Locales Database
+// 50 World Currencies & Locales Database Config
 const currencyConfig = {
     INR: { symbol: "₹", locale: "en-IN" },
     USD: { symbol: "$", locale: "en-US" },
-    GBP: { symbol: "£", locale: "en-GB" },
     EUR: { symbol: "€", locale: "de-DE" },
+    GBP: { symbol: "£", locale: "en-GB" },
     CAD: { symbol: "C$", locale: "en-CA" },
     AUD: { symbol: "A$", locale: "en-AU" },
     AED: { symbol: "AED ", locale: "ar-AE" },
@@ -36,7 +36,37 @@ const currencyConfig = {
     MXN: { symbol: "$", locale: "es-MX" },
     ZAR: { symbol: "R ", locale: "en-ZA" },
     CHF: { symbol: "CHF ", locale: "de-CH" },
-    SEK: { symbol: "kr ", locale: "sv-SE" }
+    SEK: { symbol: "kr ", locale: "sv-SE" },
+    NOK: { symbol: "kr ", locale: "nb-NO" },
+    DKK: { symbol: "kr ", locale: "da-DK" },
+    PLN: { symbol: "zł ", locale: "pl-PL" },
+    CZK: { symbol: "Kč ", locale: "cs-CZ" },
+    HUF: { symbol: "Ft ", locale: "hu-HU" },
+    TRY: { symbol: "₺", locale: "tr-TR" },
+    ILS: { symbol: "₪", locale: "he-IL" },
+    MYR: { symbol: "RM ", locale: "ms-MY" },
+    THB: { symbol: "฿", locale: "th-TH" },
+    IDR: { symbol: "Rp ", locale: "id-ID" },
+    PHP: { symbol: "₱", locale: "en-PH" },
+    VND: { symbol: "₫", locale: "vi-VN" },
+    PKR: { symbol: "Rs ", locale: "ur-PK" },
+    BDT: { symbol: "৳", locale: "bn-BD" },
+    LKR: { symbol: "Rs ", locale: "si-LK" },
+    NPR: { symbol: "Rs ", locale: "ne-NP" },
+    EGP: { symbol: "E£ ", locale: "ar-EG" },
+    NGN: { symbol: "₦", locale: "en-NG" },
+    KES: { symbol: "KSh ", locale: "sw-KE" },
+    ARS: { symbol: "$", locale: "es-AR" },
+    CLP: { symbol: "$", locale: "es-CL" },
+    COP: { symbol: "$", locale: "es-CO" },
+    PEN: { symbol: "S/ ", locale: "es-PE" },
+    QAR: { symbol: "QR ", locale: "ar-QA" },
+    KWD: { symbol: "KD ", locale: "ar-KW" },
+    BHD: { symbol: "BD ", locale: "ar-BH" },
+    OMR: { symbol: "RO ", locale: "ar-OM" },
+    JOD: { symbol: "JD ", locale: "ar-JO" },
+    UAH: { symbol: "₴", locale: "uk-UA" },
+    RON: { symbol: "lei ", locale: "ro-RO" }
 };
 
 let currentCurrency = "INR";
@@ -50,13 +80,13 @@ const loanData = {
     education: { title: "Education Loan EMI Calculator", amount: 1000000, rate: 9.5, tenure: 7 }
 };
 
-// Formatting Helper with Selected Currency
+// Formatting Helper
 function formatCurrency(val) {
     const config = currencyConfig[currentCurrency] || currencyConfig.INR;
     return config.symbol + Number(val).toLocaleString(config.locale, { maximumFractionDigits: 0 });
 }
 
-// --- CUSTOM XE-STYLE DROPDOWN LOGIC (HD IMAGE FLAGS SUPPORT) ---
+// Custom Dropdown Logic
 function toggleCurrencyMenu() {
     const menu = document.getElementById("currencyMenu");
     if (menu) {
@@ -67,13 +97,11 @@ function toggleCurrencyMenu() {
 function selectCurrency(code, flagImgUrl) {
     currentCurrency = code;
 
-    // Update Button Flag Image & Code Text UI
     const flagElem = document.getElementById("selectedFlagImg");
     const codeElem = document.getElementById("selectedCode");
     if (flagElem) flagElem.src = flagImgUrl;
     if (codeElem) codeElem.innerText = code;
 
-    // Update Active Checkmark in floating list
     document.querySelectorAll(".dropdown-item").forEach(item => {
         item.classList.remove("active");
     });
@@ -81,11 +109,9 @@ function selectCurrency(code, flagImgUrl) {
         event.currentTarget.classList.add("active");
     }
 
-    // Close Floating Menu
     const menu = document.getElementById("currencyMenu");
     if (menu) menu.classList.remove("show");
 
-    // Update Symbol Labels on UI
     const symbol = currencyConfig[code] ? currencyConfig[code].symbol : "₹";
     document.querySelectorAll('.currSymbol').forEach(el => {
         el.innerText = symbol;
@@ -94,7 +120,6 @@ function selectCurrency(code, flagImgUrl) {
     calculateEMI();
 }
 
-// Close Dropdown Menu when clicking outside
 window.onclick = function(event) {
     if (!event.target.closest('.custom-dropdown-container')) {
         const menu = document.getElementById("currencyMenu");
@@ -104,13 +129,12 @@ window.onclick = function(event) {
     }
 };
 
-// --- GROWW GREEN DYNAMIC SLIDER FILL FUNCTION ---
+// Slider Track
 function updateSliderTrack(slider) {
     let min = slider.min || 0;
     let max = slider.max || 100;
     let val = slider.value;
     let percentage = ((val - min) / (max - min)) * 100;
-
     slider.style.background = `linear-gradient(to right, #00d09c 0%, #00d09c ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`;
 }
 
@@ -132,85 +156,45 @@ function calculateEMI() {
     let totalPayment = EMI * N;
     let totalInterest = totalPayment - P;
 
-    // Update Text UI
     result.innerText = formatCurrency(EMI.toFixed(0));
     principalText.innerText = formatCurrency(P);
     interestText.innerText = formatCurrency(totalInterest.toFixed(0));
     paymentText.innerText = formatCurrency(totalPayment.toFixed(0));
 
-    // Update Chart
     updateChart(P, totalInterest);
-
-    // Sync Slider Green Background Fill
     syncAllSliderTracks();
-
-    // Prepare Data for Monthly Amortization Table
     prepareAmortizationData(P, R, N, EMI);
     renderSchedule();
 }
 
-// --- SLIDER DRAG HANDLERS ---
-loan.oninput = () => { 
-    loanValue.value = loan.value; 
-    calculateEMI(); 
-};
+loan.oninput = () => { loanValue.value = loan.value; calculateEMI(); };
+rate.oninput = () => { rateValue.value = rate.value; calculateEMI(); };
+time.oninput = () => { timeValue.value = time.value; calculateEMI(); };
 
-rate.oninput = () => { 
-    rateValue.value = rate.value; 
-    calculateEMI(); 
-};
+loanValue.oninput = () => { loan.value = loanValue.value; calculateEMI(); };
+rateValue.oninput = () => { rate.value = rateValue.value; calculateEMI(); };
+timeValue.oninput = () => { time.value = timeValue.value; calculateEMI(); };
 
-time.oninput = () => { 
-    timeValue.value = time.value; 
-    calculateEMI(); 
-};
-
-// --- DIRECT INPUT TYPING HANDLERS (Groww Two-Way Sync) ---
-loanValue.oninput = () => {
-    loan.value = loanValue.value;
-    calculateEMI();
-};
-
-rateValue.oninput = () => {
-    rate.value = rateValue.value;
-    calculateEMI();
-};
-
-timeValue.oninput = () => {
-    time.value = timeValue.value;
-    calculateEMI();
-};
-
-// Switch Loan Tabs
 function switchLoan(type) {
     document.getElementById("loanHeading").innerText = loanData[type].title;
-
-    // Update Sliders
     loan.value = loanData[type].amount;
     rate.value = loanData[type].rate;
     time.value = loanData[type].tenure;
 
-    // Update Input Boxes
     loanValue.value = loanData[type].amount;
     rateValue.value = loanData[type].rate;
     timeValue.value = loanData[type].tenure;
 
-    // Active tab CSS update
     document.querySelectorAll('.tab-link').forEach(tab => tab.classList.remove('active'));
     if(event && event.currentTarget) {
         event.currentTarget.classList.add('active');
     }
-
     calculateEMI();
 }
 
-// Chart.js Setup (With Bright White Text Labels)
 function updateChart(principal, interest) {
     let ctx = document.getElementById("myChart").getContext("2d");
-
-    if (chart) {
-        chart.destroy();
-    }
+    if (chart) chart.destroy();
 
     chart = new Chart(ctx, {
         type: 'pie',
@@ -228,7 +212,7 @@ function updateChart(principal, interest) {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        color: '#ffffff', // White color text
+                        color: '#ffffff',
                         boxWidth: 12,
                         padding: 15,
                         font: { size: 12, weight: 'bold' }
@@ -239,11 +223,9 @@ function updateChart(principal, interest) {
     });
 }
 
-// --- TOGGLE MAIN AMORTIZATION SECTION ---
 function toggleAmortSection() {
     const amortContent = document.getElementById("amortContent");
     const amortIcon = document.getElementById("amortIcon");
-
     if (amortContent.style.display === "none" || amortContent.style.display === "") {
         amortContent.style.display = "block";
         amortIcon.innerText = "-";
@@ -253,25 +235,18 @@ function toggleAmortSection() {
     }
 }
 
-// --- PREPARE AMORTIZATION DATA (ALWAYS START FROM JAN) ---
 function prepareAmortizationData(principal, monthlyRate, totalMonths, emi) {
     calculatedAmortData = [];
-    visibleYearsCount = 5; // Reset to 5 years view on value change
-
+    visibleYearsCount = 5;
     let balance = principal;
     let today = new Date();
     let currentYear = today.getFullYear();
-    let currentMonthIdx = 0; // Hamesha Jan (January) se start hoga
-
+    let currentMonthIdx = 0;
     let monthCounter = 0;
     let yr = currentYear;
 
     while (monthCounter < totalMonths && balance > 0) {
-        let yearObj = {
-            year: yr,
-            months: []
-        };
-
+        let yearObj = { year: yr, months: [] };
         let monthsInThisYear = 0;
         while (monthsInThisYear < 12 && monthCounter < totalMonths && balance > 0) {
             let mName = monthNames[currentMonthIdx];
@@ -298,20 +273,17 @@ function prepareAmortizationData(principal, monthlyRate, totalMonths, emi) {
             monthsInThisYear++;
             monthCounter++;
         }
-
         calculatedAmortData.push(yearObj);
         yr++;
     }
 }
 
-// --- RENDER SCHEDULE (5 YEARS & LOAD MORE) ---
 function renderSchedule() {
     const scheduleContainer = document.getElementById("scheduleContainer");
     const loadMoreBox = document.getElementById("loadMoreBox");
     if (!scheduleContainer) return;
 
     scheduleContainer.innerHTML = "";
-
     let yearsToDisplay = calculatedAmortData.slice(0, visibleYearsCount);
 
     yearsToDisplay.forEach((yearObj) => {
@@ -323,15 +295,10 @@ function renderSchedule() {
         yearHeader.onclick = function() {
             let isActive = yearBlock.classList.contains("active");
             document.querySelectorAll('.year-block').forEach(b => b.classList.remove('active'));
-            if (!isActive) {
-                yearBlock.classList.add('active');
-            }
+            if (!isActive) yearBlock.classList.add('active');
         };
 
-        yearHeader.innerHTML = `
-            <span>${yearObj.year}</span>
-            <span class="chevron-icon">▼</span>
-        `;
+        yearHeader.innerHTML = `<span>${yearObj.year}</span><span class="chevron-icon">▼</span>`;
 
         let tableWrapper = document.createElement("div");
         tableWrapper.className = "month-table-wrapper";
@@ -362,18 +329,13 @@ function renderSchedule() {
             `;
         });
 
-        tableHTML += `
-                </tbody>
-            </table>
-        `;
-
+        tableHTML += `</tbody></table>`;
         tableWrapper.innerHTML = tableHTML;
         yearBlock.appendChild(yearHeader);
         yearBlock.appendChild(tableWrapper);
         scheduleContainer.appendChild(yearBlock);
     });
 
-    // Control "Load More" Button Visibility
     if (visibleYearsCount < calculatedAmortData.length) {
         loadMoreBox.style.display = "block";
     } else {
@@ -381,13 +343,11 @@ function renderSchedule() {
     }
 }
 
-// "Load More" Action
 function loadMoreYears() {
     visibleYearsCount += 5;
     renderSchedule();
 }
 
-// --- SHARE FUNCTION ---
 function shareCalculator() {
     if (navigator.share) {
         navigator.share({
@@ -397,9 +357,8 @@ function shareCalculator() {
         }).catch(console.error);
     } else {
         navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard! You can share it anywhere.');
+        alert('Link copied to clipboard!');
     }
 }
 
-// Initial Call
 calculateEMI();
