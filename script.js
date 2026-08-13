@@ -16,6 +16,16 @@ let chart;
 let visibleYearsCount = 5; // Initial 5 years view
 let calculatedAmortData = []; // Calculated schedule data
 
+// Currency Settings Configuration
+const currencyConfig = {
+    INR: { symbol: "₹", locale: "en-IN" },
+    USD: { symbol: "$", locale: "en-US" },
+    EUR: { symbol: "€", locale: "de-DE" },
+    GBP: { symbol: "£", locale: "en-GB" }
+};
+
+let currentCurrency = "INR";
+
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 // Loan Presets
@@ -26,9 +36,25 @@ const loanData = {
     education: { title: "Education Loan EMI Calculator", amount: 1000000, rate: 9.5, tenure: 7 }
 };
 
-// Formatting Helper
-function formatINR(val) {
-    return "₹" + Number(val).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+// Formatting Helper with Selected Currency
+function formatCurrency(val) {
+    const config = currencyConfig[currentCurrency];
+    return config.symbol + Number(val).toLocaleString(config.locale, { maximumFractionDigits: 0 });
+}
+
+// Change Currency Function (Triggered by Dropdown)
+function changeCurrency() {
+    const selector = document.getElementById("currencySelect");
+    if (selector) {
+        currentCurrency = selector.value;
+    }
+    
+    // Update all static currency symbol labels on UI
+    document.querySelectorAll('.currSymbol').forEach(el => {
+        el.innerText = currencyConfig[currentCurrency].symbol;
+    });
+
+    calculateEMI();
 }
 
 // --- GROWW GREEN DYNAMIC SLIDER FILL FUNCTION ---
@@ -60,10 +86,10 @@ function calculateEMI() {
     let totalInterest = totalPayment - P;
 
     // Update Text UI
-    result.innerText = formatINR(EMI.toFixed(0));
-    principalText.innerText = formatINR(P);
-    interestText.innerText = formatINR(totalInterest.toFixed(0));
-    paymentText.innerText = formatINR(totalPayment.toFixed(0));
+    result.innerText = formatCurrency(EMI.toFixed(0));
+    principalText.innerText = formatCurrency(P);
+    interestText.innerText = formatCurrency(totalInterest.toFixed(0));
+    paymentText.innerText = formatCurrency(totalPayment.toFixed(0));
 
     // Update Chart
     updateChart(P, totalInterest);
@@ -71,7 +97,7 @@ function calculateEMI() {
     // Sync Slider Green Background Fill
     syncAllSliderTracks();
 
-    // Prepare Data for Monthly Amortization Table (Groww Style)
+    // Prepare Data for Monthly Amortization Table
     prepareAmortizationData(P, R, N, EMI);
     renderSchedule();
 }
@@ -155,7 +181,7 @@ function updateChart(principal, interest) {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        color: '#ffffff', // <-- White color text
+                        color: '#ffffff', // White color text
                         boxWidth: 12,
                         padding: 15,
                         font: { size: 12, weight: 'bold' }
@@ -281,10 +307,10 @@ function renderSchedule() {
             tableHTML += `
                 <tr>
                     <td>${m.month}</td>
-                    <td>${formatINR(m.principalPaid)}</td>
-                    <td>${formatINR(m.interestCharged)}</td>
-                    <td>${formatINR(m.totalPayment)}</td>
-                    <td>${formatINR(m.balance)}</td>
+                    <td>${formatCurrency(m.principalPaid)}</td>
+                    <td>${formatCurrency(m.interestCharged)}</td>
+                    <td>${formatCurrency(m.totalPayment)}</td>
+                    <td>${formatCurrency(m.balance)}</td>
                 </tr>
             `;
         });
