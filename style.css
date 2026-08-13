@@ -362,11 +362,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
     display: none;
     padding: 15px;
     margin: 10px 0 20px 0;
-    background-color: #f4fbf7; /* Exact Groww Light Tint Background */
+    background-color: #f4fbf7;
     border-radius: 12px;
     border: 1px solid #e1f5ee;
     
-    /* MOBILE SCROLLBAR FIX */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -377,7 +376,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .amort-table {
     width: 100%;
-    min-width: 500px; /* Ensures text doesn't squeeze on small mobile screens */
+    min-width: 500px;
     border-collapse: collapse;
 }
 
@@ -393,7 +392,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .amort-table td {
     padding: 12px 10px;
-    color: #222529; /* Exact dark readable text */
+    color: #222529;
     font-weight: 500;
     font-size: 14px;
     white-space: nowrap;
@@ -407,7 +406,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
     background-color: #e8f7f1;
 }
 
-/* Scrollbar Customization for Mobile */
 .month-table-wrapper::-webkit-scrollbar {
     height: 4px;
 }
@@ -422,7 +420,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
     border-radius: 10px;
 }
 
-/* Groww Green Load More Button */
 .load-more-box {
     text-align: center;
     margin-top: 25px;
@@ -442,6 +439,85 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .btn-load-more:hover {
     background-color: #00b889;
+}
+
+/* --- CUSTOM XE-STYLE FLOATING CURRENCY DROPDOWN --- */
+.custom-dropdown-btn {
+    background: #1e293b;
+    color: white;
+    border: 1px solid #475569;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.custom-dropdown-btn:hover {
+    background: #334155;
+}
+
+.custom-dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 230px;
+    max-height: 320px;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 8px 0;
+    z-index: 1000;
+    border: 1px solid #e2e8f0;
+}
+
+.custom-dropdown-menu.show {
+    display: flex;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    cursor: pointer;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+    background: #f1f5f9;
+}
+
+.dropdown-item .flag-icon {
+    font-size: 18px;
+    margin-right: 12px;
+}
+
+.dropdown-item .country-name {
+    flex: 1;
+}
+
+.dropdown-item .checkmark {
+    color: #2563eb;
+    font-weight: bold;
+    visibility: hidden;
+}
+
+.dropdown-item.active .checkmark {
+    visibility: visible;
+}
+
+.dropdown-item.active {
+    background: #eff6ff;
+    color: #2563eb;
 }
 
 /* --- MOBILE RESPONSIVE MEDIA QUERIES --- */
