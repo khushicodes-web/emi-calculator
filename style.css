@@ -441,12 +441,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
     background-color: #00b889;
 }
 
-/* --- CUSTOM XE-STYLE FLOATING CURRENCY DROPDOWN --- */
+/* --- CUSTOM XE-STYLE FLOATING CURRENCY DROPDOWN WITH HD FLAG IMAGES --- */
 .custom-dropdown-btn {
     background: #1e293b;
     color: white;
     border: 1px solid #475569;
-    padding: 8px 14px;
+    padding: 6px 14px;
     border-radius: 20px;
     cursor: pointer;
     display: flex;
@@ -460,12 +460,19 @@ input[type="range"]::-webkit-slider-thumb:hover {
     background: #334155;
 }
 
+.btn-flag-img {
+    width: 20px;
+    height: 14px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
 .custom-dropdown-menu {
     position: absolute;
     right: 0;
     top: 45px;
     width: 230px;
-    max-height: 320px;
+    max-height: 300px;
     overflow-y: auto;
     background: #ffffff;
     border-radius: 16px;
@@ -496,9 +503,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
     background: #f1f5f9;
 }
 
-.dropdown-item .flag-icon {
-    font-size: 18px;
+.flag-img {
+    width: 22px;
+    height: 15px;
+    border-radius: 2px;
     margin-right: 12px;
+    object-fit: cover;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .dropdown-item .country-name {
