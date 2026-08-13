@@ -144,23 +144,23 @@
                 <div class="params-box">
                     <h3>Loan Parameters</h3>
 
-                    <!-- Loan Amount -->
+                    <!-- Loan Amount (Up to 1,000,000,000 / 100 Crore) -->
                     <div class="input-group">
                         <div class="label-row">
                             <label>LOAN AMOUNT (<span class="currSymbol">₹</span>)</label>
                             <div class="input-wrapper">
                                 <span class="currSymbol">₹</span>
-                                <input type="number" id="loanValue" class="value-input" value="300000">
+                                <input type="number" id="loanValue" class="value-input" value="300000" style="width: 120px;">
                             </div>
                         </div>
-                        <input type="range" id="loan" min="10000" max="10000000" step="10000" value="300000">
+                        <input type="range" id="loan" min="10000" max="1000000000" step="50000" value="300000">
                         <div class="range-labels">
-                            <span>Min</span>
-                            <span>Max</span>
+                            <span>10K</span>
+                            <span>100Cr+</span>
                         </div>
                     </div>
 
-                    <!-- Interest Rate -->
+                    <!-- Interest Rate (Up to 50%) -->
                     <div class="input-group">
                         <div class="label-row">
                             <label>INTEREST RATE (%)</label>
@@ -169,10 +169,10 @@
                                 <span>%</span>
                             </div>
                         </div>
-                        <input type="range" id="rate" min="1" max="20" step="0.1" value="6.5">
+                        <input type="range" id="rate" min="0.1" max="50" step="0.1" value="6.5">
                         <div class="range-labels">
-                            <span>1%</span>
-                            <span>20%</span>
+                            <span>0.1%</span>
+                            <span>50%</span>
                         </div>
                     </div>
 
@@ -185,10 +185,10 @@
                                 <span>Yr</span>
                             </div>
                         </div>
-                        <input type="range" id="time" min="1" max="30" step="1" value="20">
+                        <input type="range" id="time" min="1" max="40" step="1" value="20">
                         <div class="range-labels">
                             <span>1 Yr</span>
-                            <span>30 Yrs</span>
+                            <span>40 Yrs</span>
                         </div>
                     </div>
                 </div>
@@ -246,7 +246,7 @@
             </div>
         </div>
 
-        <!-- SEO Article & Guide Section (Required for AdSense) -->
+        <!-- SEO Article & Guide Section -->
         <section class="seo-article" style="margin-top: 50px; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 1.7; color: #444;">
             <h2 style="color: #1a202c; margin-bottom: 15px;">What is an Equated Monthly Installment (EMI)?</h2>
             <p style="margin-bottom: 20px;">An Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month. EMIs are applied to both interest and principal each month so that over a specified number of years, the loan is paid off in full.</p>
