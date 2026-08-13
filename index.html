@@ -31,52 +31,64 @@
                 <span style="font-size: 10px; margin-left: 4px;">▼</span>
             </button>
 
-            <!-- Floating Card Popup (XE.com Style) -->
+            <!-- Floating Card Popup List with 19 Countries -->
             <div class="custom-dropdown-menu" id="currencyMenu">
                 <div class="dropdown-item active" onclick="selectCurrency('INR', '🇮🇳', 'India (₹)')">
-                    <span class="flag-icon">🇮🇳</span>
-                    <span class="country-name">India (₹ INR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="flag-icon">🇮🇳</span> <span class="country-name">India (₹ INR)</span> <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('USD', '🇺🇸', 'USD ($)')">
-                    <span class="flag-icon">🇺🇸</span>
-                    <span class="country-name">English (US - $)</span>
-                    <span class="checkmark">✓</span>
-                </div>
-                <div class="dropdown-item" onclick="selectCurrency('GBP', '🇬🇧', 'UK (£)')">
-                    <span class="flag-icon">🇬🇧</span>
-                    <span class="country-name">English (UK - £)</span>
-                    <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('USD', '🇺🇸', 'USA ($)')">
+                    <span class="flag-icon">🇺🇸</span> <span class="country-name">USA ($ USD)</span> <span class="checkmark">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('EUR', '🇪🇺', 'Europe (€)')">
-                    <span class="flag-icon">🇪🇺</span>
-                    <span class="country-name">Europe (€ EUR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="flag-icon">🇪🇺</span> <span class="country-name">Europe (€ EUR)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('GBP', '🇬🇧', 'UK (£)')">
+                    <span class="flag-icon">🇬🇧</span> <span class="country-name">UK (£ GBP)</span> <span class="checkmark">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('CAD', '🇨🇦', 'Canada (C$)')">
-                    <span class="flag-icon">🇨🇦</span>
-                    <span class="country-name">English (CA - C$)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="flag-icon">🇨🇦</span> <span class="country-name">Canada (C$ CAD)</span> <span class="checkmark">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('AUD', '🇦🇺', 'Australia (A$)')">
-                    <span class="flag-icon">🇦🇺</span>
-                    <span class="country-name">English (AU - A$)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="flag-icon">🇦🇺</span> <span class="country-name">Australia (A$ AUD)</span> <span class="checkmark">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('AED', '🇦🇪', 'UAE (AED)')">
-                    <span class="flag-icon">🇦🇪</span>
-                    <span class="country-name">UAE (AED)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="flag-icon">🇦🇪</span> <span class="country-name">UAE (AED)</span> <span class="checkmark">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('SAR', '🇸🇦', 'Saudi (SAR)')">
-                    <span class="flag-icon">🇸🇦</span>
-                    <span class="country-name">Saudi Arabia (SAR)</span>
-                    <span class="checkmark">✓</span>
+                <div class="dropdown-item" onclick="selectCurrency('SAR', '🇸🇦', 'Saudi Arabia (SAR)')">
+                    <span class="flag-icon">🇸🇦</span> <span class="country-name">Saudi Arabia (SAR)</span> <span class="checkmark">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('JPY', '🇯🇵', 'Japan (¥)')">
-                    <span class="flag-icon">🇯🇵</span>
-                    <span class="country-name">Japan (¥ JPY)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="flag-icon">🇯🇵</span> <span class="country-name">Japan (¥ JPY)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('CNY', '🇨🇳', 'China (¥)')">
+                    <span class="flag-icon">🇨🇳</span> <span class="country-name">China (¥ CNY)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('KRW', '🇰🇷', 'South Korea (₩)')">
+                    <span class="flag-icon">🇰🇷</span> <span class="country-name">South Korea (₩ KRW)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('SGD', '🇸🇬', 'Singapore (S$)')">
+                    <span class="flag-icon">🇸🇬</span> <span class="country-name">Singapore (S$ SGD)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('NZD', '🇳🇿', 'New Zealand (NZ$)')">
+                    <span class="flag-icon">🇳🇿</span> <span class="country-name">New Zealand (NZ$ NZD)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('BRL', '🇧🇷', 'Brazil (R$)')">
+                    <span class="flag-icon">🇧🇷</span> <span class="country-name">Brazil (R$ BRL)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('RUB', '🇷🇺', 'Russia (₽)')">
+                    <span class="flag-icon">🇷🇺</span> <span class="country-name">Russia (₽ RUB)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('MXN', '🇲🇽', 'Mexico ($)')">
+                    <span class="flag-icon">🇲🇽</span> <span class="country-name">Mexico ($ MXN)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('ZAR', '🇿🇦', 'South Africa (R)')">
+                    <span class="flag-icon">🇿🇦</span> <span class="country-name">South Africa (R ZAR)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('CHF', '🇨🇭', 'Switzerland (CHF)')">
+                    <span class="flag-icon">🇨🇭</span> <span class="country-name">Switzerland (CHF)</span> <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('SEK', '🇸🇪', 'Sweden (kr)')">
+                    <span class="flag-icon">🇸🇪</span> <span class="country-name">Sweden (kr SEK)</span> <span class="checkmark">✓</span>
                 </div>
             </div>
         </div>
