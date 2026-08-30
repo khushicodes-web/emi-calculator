@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main Tool -->
+  <!-- Main / Home Loan Calculator -->
   <url>
     <loc>https://khushicodes-web.github.io/emi-calculator/</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Car Loan Calculator -->
+  <url>
+    <loc>https://khushicodes-web.github.io/emi-calculator/car-loan-emi-calculator.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Personal Loan Calculator -->
+  <url>
+    <loc>https://khushicodes-web.github.io/emi-calculator/personal-loan-emi-calculator.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Education Loan Calculator -->
+  <url>
+    <loc>https://khushicodes-web.github.io/emi-calculator/education-loan-emi-calculator.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- About Us -->
