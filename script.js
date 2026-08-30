@@ -118,6 +118,16 @@ function selectCurrency(code, flagImgUrl, event) {
         el.innerText = symbol;
     });
 
+    // Dynamic Max Label Update based on Currency
+    const maxLabel = document.getElementById("maxLabel");
+    if (maxLabel) {
+        if (code === "INR" || code === "PKR" || code === "NPR" || code === "BDT" || code === "LKR") {
+            maxLabel.innerText = "50Cr";
+        } else {
+            maxLabel.innerText = "50M";
+        }
+    }
+
     calculateEMI();
 }
 
@@ -137,7 +147,6 @@ function updateSliderTrack(slider) {
     let max = Number(slider.max) || 100;
     let val = Number(slider.value);
     
-    // Safety check to prevent NaN or out-of-bound overflow
     if (val < min) val = min;
     if (val > max) val = max;
 
@@ -179,7 +188,7 @@ if (loan && loanValue) {
     loan.oninput = () => { loanValue.value = loan.value; updateSliderTrack(loan); calculateEMI(); };
     loanValue.oninput = () => { 
         let val = Number(loanValue.value);
-        if(val > Number(loan.max)) loan.max = val * 1.5; // Auto-scale max if input exceeds limit
+        if(val > Number(loan.max)) loan.max = val * 1.5; 
         loan.value = val; 
         updateSliderTrack(loan); 
         calculateEMI(); 
