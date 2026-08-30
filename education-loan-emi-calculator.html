@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Loan EMI Calculator - Student Study Loan Repayment Planner</title>
+    <meta name="description" content="Calculate monthly installment payments, interest accumulation, and repayment tenure schedules for higher studies and abroad education loans.">
+    <link rel="canonical" href="https://khushicodes-web.github.io/emi-calculator/education-loan-emi-calculator.html">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Education Loan EMI Calculator",
+      "url": "https://khushicodes-web.github.io/emi-calculator/education-loan-emi-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "description": "Calculates monthly EMI and interest repayment for student and study abroad loans."
+    }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span class="logo-icon">📊</span> EMI Calculator</div>
+        <ul class="nav-tabs">
+            <li class="tab-link"><a href="index.html" style="text-decoration:none; color:inherit;">Home Loan</a></li>
+            <li class="tab-link"><a href="car-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Car Loan</a></li>
+            <li class="tab-link"><a href="personal-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Personal Loan</a></li>
+            <li class="tab-link active"><a href="education-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Education Loan</a></li>
+        </ul>
+        <div class="custom-dropdown-container">
+            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()">
+                <img id="selectedFlagImg" src="https://flagcdn.com/w20/in.png" alt="India Flag" class="btn-flag-img">
+                <span id="selectedCode" style="font-weight: bold; margin-left: 4px;">INR</span>
+                <span style="font-size: 10px; margin-left: 4px;">▼</span>
+            </button>
+            <div class="custom-dropdown-menu" id="currencyMenu">
+                <div class="dropdown-item active" onclick="selectCurrency('INR', 'https://flagcdn.com/w20/in.png')">
+                    <img src="https://flagcdn.com/w20/in.png" class="flag-img" alt="India"><span class="country-name">India (₹ INR)</span><span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('USD', 'https://flagcdn.com/w20/us.png')">
+                    <img src="https://flagcdn.com/w20/us.png" class="flag-img" alt="USA"><span class="country-name">USA ($ USD)</span><span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('EUR', 'https://flagcdn.com/w20/eu.png')">
+                    <img src="https://flagcdn.com/w20/eu.png" class="flag-img" alt="Europe"><span class="country-name">Europe (€ EUR)</span><span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-section">
+            <div class="left">
+                <h1 id="loanHeading">Education Loan EMI Calculator</h1>
+                <p class="subtitle">Plan your study loan repayments with accurate estimates of interest accrual and monthly installments.</p>
+                <div class="params-box">
+                    <h3>Loan Parameters</h3>
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>STUDY LOAN AMOUNT (<span class="currSymbol">₹</span>)</label>
+                            <div class="input-wrapper">
+                                <span class="currSymbol">₹</span>
+                                <input type="number" id="loanValue" class="value-input" value="1000000" style="width: 120px;">
+                            </div>
+                        </div>
+                        <input type="range" id="loan" min="50000" max="15000000" step="50000" value="1000000">
+                        <div class="range-labels"><span>50K</span><span>1.5 Cr</span></div>
+                    </div>
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>INTEREST RATE (% p.a.)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="rateValue" class="value-input" value="9.0" step="0.1">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        <input type="range" id="rate" min="6" max="18" step="0.1" value="9.0">
+                        <div class="range-labels"><span>6%</span><span>18%</span></div>
+                    </div>
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>REPAYMENT TENURE (YEARS)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="timeValue" class="value-input" value="10">
+                                <span>Yr</span>
+                            </div>
+                        </div>
+                        <input type="range" id="time" min="1" max="15" step="1" value="10">
+                        <div class="range-labels"><span>1 Yr</span><span>15 Yrs</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <span class="card-subtitle">YOUR EMI DETAILS</span>
+                <p class="emi-title">Monthly EMI</p>
+                <h2 id="result">₹0.00</h2>
+                <div class="chart-box" style="max-width: 220px; margin: 15px auto;"><canvas id="myChart"></canvas></div>
+                <div class="summary-list">
+                    <div class="summary-item"><span>Principal Amount</span><strong id="principalText">₹0.00</strong></div>
+                    <div class="summary-item"><span>Total Interest</span><strong id="interestText">₹0.00</strong></div>
+                    <div class="summary-item total"><span>Total Amount Payable</span><strong id="paymentText">₹0.00</strong></div>
+                </div>
+                <div style="margin-top: 15px; margin-bottom: 15px;">
+                    <button onclick="shareCalculator()" style="width: 100%; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">🔗 Share Calculator</button>
+                </div>
+                <div class="schedule-main-header">
+                    <p class="amort-header-title">Your Amortization Details (Yearly/Monthly)</p>
+                    <button id="toggleAmortBtn" class="toggle-amort-btn" onclick="toggleAmortSection()"><span id="amortIcon" class="circle-icon">+</span></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Affiliate Section -->
+        <div class="offers-container">
+            <h3 class="offers-title">🔥 Best Student Loan Partners</h3>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="badge">Study Abroad</div>
+                    <h4>Global Higher Education Loan</h4>
+                    <p>Collateral-free loans up to ₹50 Lakhs for foreign universities.</p>
+                    <a href="#" target="_blank" class="apply-btn">Apply Now →</a>
+                </div>
+                <div class="offer-card">
+                    <div class="badge instant">Tax Benefit 80E</div>
+                    <h4>Domestic Degree Loans</h4>
+                    <p>Interest subsidy schemes available with low 8.5% start rates.</p>
+                    <a href="#" target="_blank" class="apply-btn">Check Eligibility →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amortization Section -->
+        <div id="amortContent" class="schedule-section" style="display: none;">
+            <div id="scheduleContainer" class="schedule-container"></div>
+            <div id="loadMoreBox" class="load-more-box" style="display: none;"><button class="btn-load-more" onclick="loadMoreYears()">Load More</button></div>
+        </div>
+
+        <!-- SEO Article & Guide -->
+        <section class="seo-article" style="margin-top: 50px; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 1.7; color: #444;">
+            <h2 style="color: #1a202c; margin-bottom: 15px;">Understanding Education Loan Repayment & Moratorium Period</h2>
+            <p style="margin-bottom: 20px;">Unlike other retail loans, Education Loans offer a unique <strong>Moratorium Period (Holiday Period)</strong>, which extends across the duration of the course plus 6 to 12 months after graduation before regular full EMI repayments start.</p>
+
+            <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">Tax Benefits Under Section 80E</h3>
+            <p style="margin-bottom: 15px;">In India, the entire interest paid towards higher education loans is eligible for deduction from taxable income under <strong>Section 80E of the Income Tax Act</strong> for up to 8 consecutive assessment years with no upper cap limit.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer style="margin-top: 40px; padding: 25px 15px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 14px; color: #64748b;">
+            <p style="margin-bottom: 8px;">© 2026 Global EMI Calculator. All Rights Reserved.</p>
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="about.html" style="color: #64748b; text-decoration: none;">About Us</a> |
+                <a href="contact.html" style="color: #64748b; text-decoration: none;">Contact Us</a> |
+                <a href="privacy-policy.html" style="color: #64748b; text-decoration: none;">Privacy Policy</a> |
+                <a href="terms.html" style="color: #64748b; text-decoration: none;">Terms & Conditions</a>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
