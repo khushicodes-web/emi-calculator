@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Loan EMI Calculator - Calculate Auto Loan Repayment Schedule</title>
+    <meta name="description" content="Free Car Loan EMI Calculator to calculate monthly vehicle loan installments, total interest, and amortized repayment schedules instantly.">
+    <link rel="canonical" href="https://khushicodes-web.github.io/emi-calculator/car-loan-emi-calculator.html">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Car Loan EMI Calculator",
+      "url": "https://khushicodes-web.github.io/emi-calculator/car-loan-emi-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "description": "Calculates monthly EMI for new and used car loans."
+    }
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span class="logo-icon">📊</span> EMI Calculator</div>
+        <ul class="nav-tabs">
+            <li class="tab-link"><a href="home-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Home Loan</a></li>
+            <li class="tab-link active"><a href="car-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Car Loan</a></li>
+            <li class="tab-link"><a href="personal-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Personal Loan</a></li>
+            <li class="tab-link"><a href="education-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Education Loan</a></li>
+        </ul>
+        <div class="custom-dropdown-container">
+            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()">
+                <img id="selectedFlagImg" src="https://flagcdn.com/w20/in.png" alt="India Flag" class="btn-flag-img">
+                <span id="selectedCode" style="font-weight: bold; margin-left: 4px;">INR</span>
+                <span style="font-size: 10px; margin-left: 4px;">▼</span>
+            </button>
+            <div class="custom-dropdown-menu" id="currencyMenu">
+                <div class="dropdown-item active" onclick="selectCurrency('INR', 'https://flagcdn.com/w20/in.png')">
+                    <img src="https://flagcdn.com/w20/in.png" class="flag-img" alt="India"><span class="country-name">India (₹ INR)</span><span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('USD', 'https://flagcdn.com/w20/us.png')">
+                    <img src="https://flagcdn.com/w20/us.png" class="flag-img" alt="USA"><span class="country-name">USA ($ USD)</span><span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item" onclick="selectCurrency('EUR', 'https://flagcdn.com/w20/eu.png')">
+                    <img src="https://flagcdn.com/w20/eu.png" class="flag-img" alt="Europe"><span class="country-name">Europe (€ EUR)</span><span class="checkmark">✓</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-section">
+            <div class="left">
+                <h1 id="loanHeading">Car Loan EMI Calculator</h1>
+                <p class="subtitle">Calculate your vehicle loan monthly installments with exact interest breakdowns and custom tenures.</p>
+                <div class="params-box">
+                    <h3>Loan Parameters</h3>
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>VEHICLE LOAN AMOUNT (<span class="currSymbol">₹</span>)</label>
+                            <div class="input-wrapper">
+                                <span class="currSymbol">₹</span>
+                                <input type="number" id="loanValue" class="value-input" value="600000" style="width: 120px;">
+                            </div>
+                        </div>
+                        <input type="range" id="loan" min="50000" max="10000000" step="10000" value="600000">
+                        <div class="range-labels"><span>50K</span><span>1 Cr</span></div>
+                    </div>
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>INTEREST RATE (% p.a.)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="rateValue" class="value-input" value="8.5" step="0.1">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        <input type="range" id="rate" min="1" max="25" step="0.1" value="8.5">
+                        <div class="range-labels"><span>1%</span><span>25%</span></div>
+                    </div>
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>LOAN TENURE (YEARS)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="timeValue" class="value-input" value="5">
+                                <span>Yr</span>
+                            </div>
+                        </div>
+                        <input type="range" id="time" min="1" max="8" step="1" value="5">
+                        <div class="range-labels"><span>1 Yr</span><span>8 Yrs</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <span class="card-subtitle">YOUR EMI DETAILS</span>
+                <p class="emi-title">Monthly EMI</p>
+                <h2 id="result">₹0.00</h2>
+                <div class="chart-box" style="max-width: 220px; margin: 15px auto;"><canvas id="myChart"></canvas></div>
+                <div class="summary-list">
+                    <div class="summary-item"><span>Principal Amount</span><strong id="principalText">₹0.00</strong></div>
+                    <div class="summary-item"><span>Total Interest</span><strong id="interestText">₹0.00</strong></div>
+                    <div class="summary-item total"><span>Total Amount Payable</span><strong id="paymentText">₹0.00</strong></div>
+                </div>
+                <div style="margin-top: 15px; margin-bottom: 15px;">
+                    <button onclick="shareCalculator()" style="width: 100%; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">🔗 Share Calculator</button>
+                </div>
+                <div class="schedule-main-header">
+                    <p class="amort-header-title">Your Amortization Details (Yearly/Monthly)</p>
+                    <button id="toggleAmortBtn" class="toggle-amort-btn" onclick="toggleAmortSection()"><span id="amortIcon" class="circle-icon">+</span></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Offers -->
+        <div class="offers-container">
+            <h3 class="offers-title">🔥 Best Auto Loan Offers</h3>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="badge">Low Interest</div>
+                    <h4>Lowest Car Loan Interest Rates</h4>
+                    <p>Compare pre-approved car loans starting at 8.2% p.a. from top banks.</p>
+                    <a href="#" target="_blank" class="apply-btn">Apply Now →</a>
+                </div>
+                <div class="offer-card">
+                    <div class="badge instant">100% On-Road Funding</div>
+                    <h4>Used Car Financing</h4>
+                    <p>Instant approval up to ₹15 Lakhs for second-hand vehicles.</p>
+                    <a href="#" target="_blank" class="apply-btn">Check Eligibility →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schedule Section -->
+        <div id="amortContent" class="schedule-section" style="display: none;">
+            <div id="scheduleContainer" class="schedule-container"></div>
+            <div id="loadMoreBox" class="load-more-box" style="display: none;"><button class="btn-load-more" onclick="loadMoreYears()">Load More</button></div>
+        </div>
+
+        <!-- Car Loan SEO Article & Guide -->
+        <section class="seo-article" style="margin-top: 50px; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 1.7; color: #444;">
+            <h2 style="color: #1a202c; margin-bottom: 15px;">How Does a Car Loan EMI Calculator Work?</h2>
+            <p style="margin-bottom: 20px;">A Car Loan EMI Calculator helps you compute the monthly amount payable to lenders when financing a new or used vehicle. Automotive loans usually have shorter tenures (1 to 7 years) compared to housing loans, which means interest rate adjustments have a significant impact on monthly commitments.</p>
+
+            <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">Tips to Reduce Car Loan Interest</h3>
+            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                <li><strong>Higher Down Payment:</strong> Paying 20-30% upfront reduces the principal amount and total interest drastically.</li>
+                <li><strong>Shorter Loan Tenure:</strong> Choosing a 3-year or 5-year tenure instead of 7 years saves considerable interest cost.</li>
+                <li><strong>Credit Score:</strong> A CIBIL/Credit score above 750 helps you negotiate interest discounts with banks.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer style="margin-top: 40px; padding: 25px 15px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 14px; color: #64748b;">
+            <p style="margin-bottom: 8px;">© 2026 Global EMI Calculator. All Rights Reserved.</p>
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="about.html" style="color: #64748b; text-decoration: none;">About Us</a> |
+                <a href="contact.html" style="color: #64748b; text-decoration: none;">Contact Us</a> |
+                <a href="privacy-policy.html" style="color: #64748b; text-decoration: none;">Privacy Policy</a> |
+                <a href="terms.html" style="color: #64748b; text-decoration: none;">Terms & Conditions</a>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
