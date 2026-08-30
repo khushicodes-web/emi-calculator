@@ -4,10 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global EMI Calculator - Calculate Home, Car & Personal Loan EMIs</title>
-    <meta name="description" content="Free Online EMI Calculator to calculate Equated Monthly Installment for Home Loans, Car Loans, Personal Loans, and Education Loans with visual graphs.">
+    <meta name="description" content="Calculate monthly EMI, total interest, and complete repayment schedules for home, car, personal, and education loans with interactive visual graphs.">
+    <link rel="canonical" href="https://khushicodes-web.github.io/emi-calculator/">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Global EMI Calculator - Free Loan Payment Tool">
+    <meta property="og:description" content="Calculate your loan EMIs and check interest amortization schedules instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khushicodes-web.github.io/emi-calculator/">
+
     <link rel="stylesheet" href="style.css">
     <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Financial Tool Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Global EMI Calculator",
+      "url": "https://khushicodes-web.github.io/emi-calculator/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "description": "Calculates equated monthly installments and interest breakdown for various loan types."
+    }
+    </script>
 </head>
 <body>
 
@@ -386,6 +407,36 @@
             </div>
         </div>
 
+        <!-- Affiliate Offers Section -->
+        <div class="offers-container">
+            <h3 class="offers-title">🔥 Best Loan & Credit Card Offers for You</h3>
+            <div class="offers-grid">
+                <!-- Card 1: Home Loan -->
+                <div class="offer-card">
+                    <div class="badge">Low Interest</div>
+                    <h4>Lowest Home Loan Rates</h4>
+                    <p>Compare & apply from top banks starting at 8.4% p.a.</p>
+                    <a href="#" target="_blank" class="apply-btn">Apply Now →</a>
+                </div>
+
+                <!-- Card 2: Personal Loan -->
+                <div class="offer-card">
+                    <div class="badge instant">Instant Approval</div>
+                    <h4>Pre-Approved Personal Loan</h4>
+                    <p>Get up to ₹5,00,000 transferred within 24 hours.</p>
+                    <a href="#" target="_blank" class="apply-btn">Check Eligibility →</a>
+                </div>
+
+                <!-- Card 3: Lifetime Free Card -->
+                <div class="offer-card">
+                    <div class="badge free">Zero Fee</div>
+                    <h4>Lifetime Free Credit Card</h4>
+                    <p>Get instant ₹1,500 welcome voucher & cashback on all spends.</p>
+                    <a href="#" target="_blank" class="apply-btn">Get Card →</a>
+                </div>
+            </div>
+        </div>
+
         <!-- Amortization Schedule Container -->
         <div id="amortContent" class="schedule-section" style="display: none;">
             <div id="scheduleContainer" class="schedule-container"></div>
@@ -411,13 +462,15 @@
             <p style="margin-bottom: 20px;">Where <strong>P</strong> represents the Principal loan amount, <strong>R</strong> is the monthly interest rate, and <strong>N</strong> is the tenure in total number of months.</p>
         </section>
 
-        <!-- Footer Section -->
-        <footer style="margin-top: 40px; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 14px; color: #718096;">
-            <p>© 2026 Global EMI Calculator. All Rights Reserved.</p>
-            <p style="margin-top: 8px;">
-                <span style="cursor: pointer; text-decoration: underline;" onclick="alert('Privacy Policy: This website does not store or collect personal financial data. All calculations are run locally in your browser.')">Privacy Policy</span> | 
-                <span style="cursor: pointer; text-decoration: underline;" onclick="alert('Disclaimer: The results provided by this calculator are for informational purposes only.')">Disclaimer</span>
-            </p>
+        <!-- Footer Section with Policy Links -->
+        <footer style="margin-top: 40px; padding: 25px 15px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 14px; color: #64748b;">
+            <p style="margin-bottom: 8px;">© 2026 Global EMI Calculator. All Rights Reserved.</p>
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="about.html" style="color: #64748b; text-decoration: none;">About Us</a> |
+                <a href="contact.html" style="color: #64748b; text-decoration: none;">Contact Us</a> |
+                <a href="privacy-policy.html" style="color: #64748b; text-decoration: none;">Privacy Policy</a> |
+                <a href="terms.html" style="color: #64748b; text-decoration: none;">Terms & Conditions</a>
+            </div>
         </footer>
     </div>
 
