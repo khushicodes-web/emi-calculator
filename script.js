@@ -94,7 +94,7 @@ function toggleCurrencyMenu() {
     }
 }
 
-function selectCurrency(code, flagImgUrl) {
+function selectCurrency(code, flagImgUrl, event) {
     currentCurrency = code;
 
     const flagElem = document.getElementById("selectedFlagImg");
@@ -105,6 +105,7 @@ function selectCurrency(code, flagImgUrl) {
     document.querySelectorAll(".dropdown-item").forEach(item => {
         item.classList.remove("active");
     });
+    
     if (event && event.currentTarget) {
         event.currentTarget.classList.add("active");
     }
@@ -131,9 +132,10 @@ window.onclick = function(event) {
 
 // Slider Track
 function updateSliderTrack(slider) {
-    let min = slider.min || 0;
-    let max = slider.max || 100;
-    let val = slider.value;
+    if (!slider) return;
+    let min = Number(slider.min) || 0;
+    let max = Number(slider.max) || 100;
+    let val = Number(slider.value);
     let percentage = ((val - min) / (max - min)) * 100;
     slider.style.background = `linear-gradient(to right, #00d09c 0%, #00d09c ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`;
 }
@@ -156,10 +158,10 @@ function calculateEMI() {
     let totalPayment = EMI * N;
     let totalInterest = totalPayment - P;
 
-    result.innerText = formatCurrency(EMI.toFixed(0));
-    principalText.innerText = formatCurrency(P);
-    interestText.innerText = formatCurrency(totalInterest.toFixed(0));
-    paymentText.innerText = formatCurrency(totalPayment.toFixed(0));
+    if (result) result.innerText = formatCurrency(Math.round(EMI));
+    if (principalText) principalText.innerText = formatCurrency(P);
+    if (interestText) interestText.innerText = formatCurrency(Math.round(totalInterest));
+    if (paymentText) paymentText.innerText = formatCurrency(Math.round(totalPayment));
 
     updateChart(P, totalInterest);
     syncAllSliderTracks();
@@ -167,16 +169,24 @@ function calculateEMI() {
     renderSchedule();
 }
 
-loan.oninput = () => { loanValue.value = loan.value; calculateEMI(); };
-rate.oninput = () => { rateValue.value = rate.value; calculateEMI(); };
-time.oninput = () => { timeValue.value = time.value; calculateEMI(); };
+// Input Handlers
+if (loan && loanValue) {
+    loan.oninput = () => { loanValue.value = loan.value; calculateEMI(); };
+    loanValue.oninput = () => { loan.value = loanValue.value; calculateEMI(); };
+}
+if (rate && rateValue) {
+    rate.oninput = () => { rateValue.value = rate.value; calculateEMI(); };
+    rateValue.oninput = () => { rate.value = rateValue.value; calculateEMI(); };
+}
+if (time && timeValue) {
+    time.oninput = () => { timeValue.value = time.value; calculateEMI(); };
+    timeValue.oninput = () => { time.value = timeValue.value; calculateEMI(); };
+}
 
-loanValue.oninput = () => { loan.value = loanValue.value; calculateEMI(); };
-rateValue.oninput = () => { rate.value = rateValue.value; calculateEMI(); };
-timeValue.oninput = () => { time.value = timeValue.value; calculateEMI(); };
+function switchLoan(type, event) {
+    const loanHeading = document.getElementById("loanHeading");
+    if (loanHeading) loanHeading.innerText = loanData[type].title;
 
-function switchLoan(type) {
-    document.getElementById("loanHeading").innerText = loanData[type].title;
     loan.value = loanData[type].amount;
     rate.value = loanData[type].rate;
     time.value = loanData[type].tenure;
@@ -186,14 +196,16 @@ function switchLoan(type) {
     timeValue.value = loanData[type].tenure;
 
     document.querySelectorAll('.tab-link').forEach(tab => tab.classList.remove('active'));
-    if(event && event.currentTarget) {
+    if (event && event.currentTarget) {
         event.currentTarget.classList.add('active');
     }
     calculateEMI();
 }
 
 function updateChart(principal, interest) {
-    let ctx = document.getElementById("myChart").getContext("2d");
+    let chartCanvas = document.getElementById("myChart");
+    if (!chartCanvas) return;
+    let ctx = chartCanvas.getContext("2d");
     if (chart) chart.destroy();
 
     chart = new Chart(ctx, {
@@ -226,12 +238,13 @@ function updateChart(principal, interest) {
 function toggleAmortSection() {
     const amortContent = document.getElementById("amortContent");
     const amortIcon = document.getElementById("amortIcon");
+    if (!amortContent) return;
     if (amortContent.style.display === "none" || amortContent.style.display === "") {
         amortContent.style.display = "block";
-        amortIcon.innerText = "-";
+        if (amortIcon) amortIcon.innerText = "-";
     } else {
         amortContent.style.display = "none";
-        amortIcon.innerText = "+";
+        if (amortIcon) amortIcon.innerText = "+";
     }
 }
 
@@ -321,10 +334,10 @@ function renderSchedule() {
             tableHTML += `
                 <tr>
                     <td>${m.month}</td>
-                    <td>${formatCurrency(m.principalPaid)}</td>
-                    <td>${formatCurrency(m.interestCharged)}</td>
-                    <td>${formatCurrency(m.totalPayment)}</td>
-                    <td>${formatCurrency(m.balance)}</td>
+                    <td>${formatCurrency(Math.round(m.principalPaid))}</td>
+                    <td>${formatCurrency(Math.round(m.interestCharged))}</td>
+                    <td>${formatCurrency(Math.round(m.totalPayment))}</td>
+                    <td>${formatCurrency(Math.round(m.balance))}</td>
                 </tr>
             `;
         });
@@ -336,10 +349,12 @@ function renderSchedule() {
         scheduleContainer.appendChild(yearBlock);
     });
 
-    if (visibleYearsCount < calculatedAmortData.length) {
-        loadMoreBox.style.display = "block";
-    } else {
-        loadMoreBox.style.display = "none";
+    if (loadMoreBox) {
+        if (visibleYearsCount < calculatedAmortData.length) {
+            loadMoreBox.style.display = "block";
+        } else {
+            loadMoreBox.style.display = "none";
+        }
     }
 }
 
@@ -361,4 +376,10 @@ function shareCalculator() {
     }
 }
 
-calculateEMI();
+// Automatic Initializer
+document.addEventListener("DOMContentLoaded", () => {
+    if (loan && loanValue) loanValue.value = loan.value;
+    if (rate && rateValue) rateValue.value = rate.value;
+    if (time && timeValue) timeValue.value = time.value;
+    calculateEMI();
+});
