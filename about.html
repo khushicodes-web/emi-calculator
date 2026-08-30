@@ -6,26 +6,82 @@
     <title>About Us - Global EMI Calculator</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .page-container { max-width: 800px; margin: 40px auto; padding: 24px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .page-container { 
+            max-width: 800px; 
+            margin: 40px auto; 
+            padding: 32px 24px; 
+            background: #ffffff; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
         h1, h2 { color: #0f172a; }
-        p { color: #475569; line-height: 1.7; font-size: 15px; margin-bottom: 16px; }
-        a.back-link { display: inline-block; margin-bottom: 20px; color: #2563eb; text-decoration: none; font-weight: 600; }
+        h1 { margin-bottom: 20px; }
+        h2 { margin-top: 28px; font-size: 20px; }
+        p, li { color: #475569; line-height: 1.7; font-size: 15px; margin-bottom: 14px; }
+        ul { padding-left: 20px; margin-bottom: 16px; }
+        a.back-link { 
+            display: inline-block; 
+            margin-bottom: 20px; 
+            color: #2563eb; 
+            text-decoration: none; 
+            font-weight: 600; 
+        }
+        a.back-link:hover { text-decoration: underline; }
+        .highlight-box {
+            background: #f1f5f9;
+            border-left: 4px solid #00c853;
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 36px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 13px;
+        }
+        footer a { color: #64748b; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body style="background-color: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
     <div class="page-container">
         <a href="index.html" class="back-link">← Back to Calculator</a>
-        <h1>About Us</h1>
-        <p>Welcome to <strong>Global EMI Calculator</strong>, your trusted financial utility designed to bring clarity, transparency, and precision to your loan and installment calculations.</p>
         
-        <h2>Our Mission</h2>
-        <p>Our primary objective is to make complex financial decision-making simple and accessible. Whether planning a home purchase, comparing personal loan options, or financing higher education, our tools provide instant, real-time calculations alongside visual breakdown charts and amortization insights.</p>
+        <h1>About Global EMI Calculator</h1>
+        <p>Welcome to <strong>Global EMI Calculator</strong>, a dedicated financial utility built to provide precise, fast, and transparent loan repayment calculations for borrowers worldwide.</p>
         
+        <div class="highlight-box">
+            <p style="margin: 0; font-weight: 500; color: #1e293b;">
+                💡 <strong>Our Goal:</strong> To eliminate guesswork from financial planning by combining real-time mathematical accuracy with clean visual representations.
+            </p>
+        </div>
+
+        <h2>Who We Are</h2>
+        <p>Global EMI Calculator is an independent, developer-driven platform dedicated to simplifying personal finance. We believe everyone deserves direct access to clean financial tools without hidden paywalls, intrusive registrations, or bloated interfaces.</p>
+
         <h2>What We Offer</h2>
-        <p>We provide accurate mathematical computation models covering Home Loans, Car Loans, Personal Loans, and Education Loans. Users can dynamically test various principal amounts, interest rates, and tenures to optimize their monthly budget and save on long-term borrowing costs.</p>
-        
-        <h2>Transparency & Accuracy</h2>
-        <p>Our tools utilize standard reducing-balance and mathematical compounding formulas to maintain exact precision. We continuously update our interface to offer a fast, clean, and distraction-free user experience.</p>
+        <ul>
+            <li><strong>Comprehensive Loan Calculations:</strong> Real-time computations for Home Loans, Personal Loans, Car Loans, and Education Loans.</li>
+            <li><strong>Dynamic Visual Breakdowns:</strong> Interactive charts that instantly separate Principal Loan Amounts from Total Payable Interest.</li>
+            <li><strong>Currency Flexibility:</strong> Multi-currency support designed for domestic and international financial analysis.</li>
+            <li><strong>Amortization Insights:</strong> Clear visibility into how monthly installments chip away at total balances over time.</li>
+        </ul>
+
+        <h2>Accuracy & Data Privacy</h2>
+        <p>All calculations run client-side using standard reducing-balance formulas recognized by major financial institutions. We do not store, track, or sell any personal financial figures entered into the calculator.</p>
+
+        <footer>
+            <p>© 2026 Global EMI Calculator. All Rights Reserved.</p>
+            <p>
+                <a href="about.html">About Us</a> | 
+                <a href="contact.html">Contact Us</a> | 
+                <a href="privacy-policy.html">Privacy Policy</a> | 
+                <a href="terms.html">Terms & Conditions</a>
+            </p>
+        </footer>
     </div>
 </body>
 </html>
