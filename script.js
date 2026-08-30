@@ -130,12 +130,17 @@ window.onclick = function(event) {
     }
 };
 
-// Slider Track
+// Fixed Slider Track Background Calculation
 function updateSliderTrack(slider) {
     if (!slider) return;
     let min = Number(slider.min) || 0;
     let max = Number(slider.max) || 100;
     let val = Number(slider.value);
+    
+    // Safety check to prevent NaN or out-of-bound overflow
+    if (val < min) val = min;
+    if (val > max) val = max;
+
     let percentage = ((val - min) / (max - min)) * 100;
     slider.style.background = `linear-gradient(to right, #00d09c 0%, #00d09c ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`;
 }
@@ -169,18 +174,24 @@ function calculateEMI() {
     renderSchedule();
 }
 
-// Input Handlers
+// Input Handlers with Track Syncing
 if (loan && loanValue) {
-    loan.oninput = () => { loanValue.value = loan.value; calculateEMI(); };
-    loanValue.oninput = () => { loan.value = loanValue.value; calculateEMI(); };
+    loan.oninput = () => { loanValue.value = loan.value; updateSliderTrack(loan); calculateEMI(); };
+    loanValue.oninput = () => { 
+        let val = Number(loanValue.value);
+        if(val > Number(loan.max)) loan.max = val * 1.5; // Auto-scale max if input exceeds limit
+        loan.value = val; 
+        updateSliderTrack(loan); 
+        calculateEMI(); 
+    };
 }
 if (rate && rateValue) {
-    rate.oninput = () => { rateValue.value = rate.value; calculateEMI(); };
-    rateValue.oninput = () => { rate.value = rateValue.value; calculateEMI(); };
+    rate.oninput = () => { rateValue.value = rate.value; updateSliderTrack(rate); calculateEMI(); };
+    rateValue.oninput = () => { rate.value = rateValue.value; updateSliderTrack(rate); calculateEMI(); };
 }
 if (time && timeValue) {
-    time.oninput = () => { timeValue.value = time.value; calculateEMI(); };
-    timeValue.oninput = () => { time.value = timeValue.value; calculateEMI(); };
+    time.oninput = () => { timeValue.value = time.value; updateSliderTrack(time); calculateEMI(); };
+    timeValue.oninput = () => { time.value = timeValue.value; updateSliderTrack(time); calculateEMI(); };
 }
 
 function switchLoan(type, event) {
@@ -194,6 +205,8 @@ function switchLoan(type, event) {
     loanValue.value = loanData[type].amount;
     rateValue.value = loanData[type].rate;
     timeValue.value = loanData[type].tenure;
+
+    syncAllSliderTracks();
 
     document.querySelectorAll('.tab-link').forEach(tab => tab.classList.remove('active'));
     if (event && event.currentTarget) {
