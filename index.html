@@ -39,10 +39,10 @@
         </div>
 
         <ul class="nav-tabs">
-            <li class="tab-link active" onclick="switchLoan('home')">Home Loan</li>
-            <li class="tab-link" onclick="switchLoan('car')">Car Loan</li>
-            <li class="tab-link" onclick="switchLoan('personal')">Personal Loan</li>
-            <li class="tab-link" onclick="switchLoan('education')">Education Loan</li>
+            <li class="tab-link active"><a href="home-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Home Loan</a></li>
+            <li class="tab-link"><a href="car-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Car Loan</a></li>
+            <li class="tab-link"><a href="personal-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Personal Loan</a></li>
+            <li class="tab-link"><a href="education-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Education Loan</a></li>
         </ul>
 
         <!-- Custom XE-Style Floating Country/Currency Picker Trigger -->
@@ -392,7 +392,7 @@
                     </div>
                 </div>
 
-                <!-- Action Button: Only Share Button -->
+                <!-- Action Button -->
                 <div style="margin-top: 15px; margin-bottom: 15px;">
                     <button onclick="shareCalculator()" style="width: 100%; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">🔗 Share Calculator</button>
                 </div>
@@ -403,52 +403,6 @@
                     <button id="toggleAmortBtn" class="toggle-amort-btn" onclick="toggleAmortSection()">
                         <span id="amortIcon" class="circle-icon">+</span>
                     </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Premium Affiliate Offers Section -->
-        <div class="offers-container">
-            <div class="offers-header">
-                <span class="offers-tag">RECOMMENDED OFFERS</span>
-                <h3 class="offers-title">Handpicked Loan & Card Deals</h3>
-            </div>
-            
-            <div class="offers-grid">
-                <!-- Card 1: Home Loan -->
-                <div class="offer-card">
-                    <div class="card-top">
-                        <div class="card-icon-box blue-icon">🏠</div>
-                        <span class="badge blue-badge">Lowest Rate</span>
-                    </div>
-                    <h4>Lowest Home Loan</h4>
-                    <p class="offer-rate">Starting @ <strong>8.40% p.a.</strong></p>
-                    <p class="offer-desc">Compare & apply from top banks with minimal processing fee.</p>
-                    <a href="#" target="_blank" class="apply-btn">Check Eligibility →</a>
-                </div>
-
-                <!-- Card 2: Personal Loan -->
-                <div class="offer-card popular-card">
-                    <div class="card-top">
-                        <div class="card-icon-box green-icon">⚡</div>
-                        <span class="badge green-badge">Instant Disbursal</span>
-                    </div>
-                    <h4>Pre-Approved Loan</h4>
-                    <p class="offer-rate">Up to <strong>₹5,00,000</strong></p>
-                    <p class="offer-desc">100% paperless approval directly into your bank account.</p>
-                    <a href="#" target="_blank" class="apply-btn primary-btn">Apply Online →</a>
-                </div>
-
-                <!-- Card 3: Lifetime Free Card -->
-                <div class="offer-card">
-                    <div class="card-top">
-                        <div class="card-icon-box gold-icon">💳</div>
-                        <span class="badge gold-badge">Zero Annual Fee</span>
-                    </div>
-                    <h4>Lifetime Free Card</h4>
-                    <p class="offer-rate">Flat <strong>5% Cashback</strong></p>
-                    <p class="offer-desc">Get instant ₹1,500 welcome voucher and fuel surcharge waiver.</p>
-                    <a href="#" target="_blank" class="apply-btn">Get Card →</a>
                 </div>
             </div>
         </div>
