@@ -65,8 +65,11 @@
                                 <input type="number" id="loanValue" class="value-input" value="600000" style="width: 120px;">
                             </div>
                         </div>
-                        <input type="range" id="loan" min="50000" max="10000000" step="10000" value="600000">
-                        <div class="range-labels"><span>50K</span><span>1 Cr</span></div>
+                        <input type="range" id="loan" min="50000" max="500000000" step="50000" value="600000">
+                        <div class="range-labels">
+                            <span>50K</span>
+                            <span id="maxLabel">50Cr</span>
+                        </div>
                     </div>
                     <div class="input-group">
                         <div class="label-row">
