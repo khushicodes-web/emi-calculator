@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Loan EMI Calculator - Calculate Auto Loan Repayment Schedule</title>
     <meta name="description" content="Free Car Loan EMI Calculator to calculate monthly vehicle loan installments, total interest, and amortized repayment schedules instantly.">
+    
     <link rel="canonical" href="https://khushicodes-web.github.io/emi-calculator/car-loan-emi-calculator.html">
+    
+    <!-- Social Media Sharing Meta Tags -->
+    <meta property="og:title" content="Car Loan EMI Calculator - Free Auto Loan Tool">
+    <meta property="og:description" content="Calculate monthly car loan EMIs and check repayment schedules instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khushicodes-web.github.io/emi-calculator/car-loan-emi-calculator.html">
+
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -15,6 +24,7 @@
       "name": "Car Loan EMI Calculator",
       "url": "https://khushicodes-web.github.io/emi-calculator/car-loan-emi-calculator.html",
       "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
       "description": "Calculates monthly EMI for new and used car loans."
     }
     </script>
@@ -260,17 +270,32 @@
             <div id="loadMoreBox" class="load-more-box" style="display: none;"><button class="btn-load-more" onclick="loadMoreYears()">Load More</button></div>
         </div>
 
-        <!-- Car Loan SEO Article & Guide -->
+        <!-- Extended SEO Article Section -->
         <section class="seo-article" style="margin-top: 50px; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 1.7; color: #444;">
             <h2 style="color: #1a202c; margin-bottom: 15px;">How Does a Car Loan EMI Calculator Work?</h2>
             <p style="margin-bottom: 20px;">A Car Loan EMI Calculator helps you compute the monthly amount payable to lenders when financing a new or used vehicle. Automotive loans usually have shorter tenures (1 to 7 years) compared to housing loans, which means interest rate adjustments have a significant impact on monthly commitments.</p>
 
-            <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">Tips to Reduce Car Loan Interest</h3>
+            <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">Key Factors Influencing Your Car Loan EMI</h3>
             <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Higher Down Payment:</strong> Paying 20-30% upfront reduces the principal amount and total interest drastically.</li>
-                <li><strong>Shorter Loan Tenure:</strong> Choosing a 3-year or 5-year tenure instead of 7 years saves considerable interest cost.</li>
-                <li><strong>Credit Score:</strong> A CIBIL/Credit score above 750 helps you negotiate interest discounts with banks.</li>
+                <li style="margin-bottom: 8px;"><strong>Loan Principal Amount:</strong> The actual sum borrowed to purchase the vehicle after deducting your initial down payment.</li>
+                <li style="margin-bottom: 8px;"><strong>Interest Rate:</strong> Annual interest charged by the bank or dealer financing company. Fixed rates remain constant, whereas floating rates fluctuate.</li>
+                <li style="margin-bottom: 8px;"><strong>Loan Tenure:</strong> The duration (typically 12 to 84 months) over which you agree to pay off the auto financing balance.</li>
             </ul>
+
+            <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">Tips to Reduce Car Loan Interest & Monthly Payments</h3>
+            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Higher Down Payment:</strong> Paying 20-30% upfront reduces the principal amount and total interest drastically.</li>
+                <li style="margin-bottom: 8px;"><strong>Shorter Loan Tenure:</strong> Choosing a 3-year or 5-year tenure instead of 7 years saves considerable interest cost over time.</li>
+                <li style="margin-bottom: 8px;"><strong>Credit Score Maintenance:</strong> A CIBIL/Credit score above 750 helps you negotiate interest rate discounts with banks.</li>
+                <li style="margin-bottom: 8px;"><strong>Prepayment & Foreclosure:</strong> Making partial prepayments whenever you receive a bonus lowers your overall outstanding liability.</li>
+            </ul>
+
+            <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">Car Loan EMI Calculation Formula</h3>
+            <p style="margin-bottom: 15px;">The standard mathematical formula used to derive your monthly auto installment is:</p>
+            <div style="background: #f7fafc; padding: 15px; border-left: 4px solid #3182ce; font-weight: bold; font-family: monospace; margin-bottom: 15px;">
+                EMI = [P x R x (1+R)^N] / [(1+R)^N - 1]
+            </div>
+            <p style="margin-bottom: 10px;">Where <strong>P</strong> is the principal loan amount, <strong>R</strong> is the monthly interest rate (Annual Rate / 12 / 100), and <strong>N</strong> is the duration in months.</p>
         </section>
 
         <!-- Footer -->
