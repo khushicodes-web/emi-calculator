@@ -65,9 +65,8 @@
         }
     </style>
 
-    <!-- Non-Blocking External CSS Load -->
-    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <!-- External CSS Load -->
+    <link rel="stylesheet" href="style.css">
 
     <!-- Chart.js with defer for performance optimization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
@@ -87,270 +86,270 @@
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="logo">
-            <span class="logo-icon">📊</span> EMI Calculator
+            <span class="logo-icon" aria-hidden="true">📊</span> EMI Calculator
         </div>
 
         <ul class="nav-tabs">
-            <li class="tab-link active"><a href="index.html" style="text-decoration:none; color:inherit;">Home Loan</a></li>
+            <li class="tab-link active"><a href="index.html" style="text-decoration:none; color:inherit;" aria-current="page">Home Loan</a></li>
             <li class="tab-link"><a href="car-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Car Loan</a></li>
             <li class="tab-link"><a href="personal-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Personal Loan</a></li>
             <li class="tab-link"><a href="education-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Education Loan</a></li>
         </ul>
 
         <div class="custom-dropdown-container">
-            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()">
+            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()" aria-expanded="false" aria-label="Select Currency">
                 <img id="selectedFlagImg" src="https://flagcdn.com/w20/in.png" alt="India Flag" class="btn-flag-img">
                 <span id="selectedCode" style="font-weight: bold; margin-left: 4px;">INR</span>
-                <span style="font-size: 10px; margin-left: 4px;">▼</span>
+                <span style="font-size: 10px; margin-left: 4px;" aria-hidden="true">▼</span>
             </button>
 
             <div class="custom-dropdown-menu" id="currencyMenu">
                 <div class="dropdown-item active" onclick="selectCurrency('INR', 'https://flagcdn.com/w20/in.png')">
-                    <img src="https://flagcdn.com/w20/in.png" class="flag-img" alt="India">
+                    <img src="https://flagcdn.com/w20/in.png" class="flag-img" alt="India Flag">
                     <span class="country-name">India (₹ INR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('USD', 'https://flagcdn.com/w20/us.png')">
-                    <img src="https://flagcdn.com/w20/us.png" class="flag-img" alt="USA">
+                    <img src="https://flagcdn.com/w20/us.png" class="flag-img" alt="USA Flag">
                     <span class="country-name">USA ($ USD)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('EUR', 'https://flagcdn.com/w20/eu.png')">
-                    <img src="https://flagcdn.com/w20/eu.png" class="flag-img" alt="Europe">
+                    <img src="https://flagcdn.com/w20/eu.png" class="flag-img" alt="Europe Flag">
                     <span class="country-name">Europe (€ EUR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('GBP', 'https://flagcdn.com/w20/gb.png')">
-                    <img src="https://flagcdn.com/w20/gb.png" class="flag-img" alt="UK">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-img" alt="UK Flag">
                     <span class="country-name">UK (£ GBP)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('CAD', 'https://flagcdn.com/w20/ca.png')">
-                    <img src="https://flagcdn.com/w20/ca.png" class="flag-img" alt="Canada">
+                    <img src="https://flagcdn.com/w20/ca.png" class="flag-img" alt="Canada Flag">
                     <span class="country-name">Canada (C$ CAD)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('AUD', 'https://flagcdn.com/w20/au.png')">
-                    <img src="https://flagcdn.com/w20/au.png" class="flag-img" alt="Australia">
+                    <img src="https://flagcdn.com/w20/au.png" class="flag-img" alt="Australia Flag">
                     <span class="country-name">Australia (A$ AUD)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('AED', 'https://flagcdn.com/w20/ae.png')">
-                    <img src="https://flagcdn.com/w20/ae.png" class="flag-img" alt="UAE">
+                    <img src="https://flagcdn.com/w20/ae.png" class="flag-img" alt="UAE Flag">
                     <span class="country-name">UAE (AED)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('SAR', 'https://flagcdn.com/w20/sa.png')">
-                    <img src="https://flagcdn.com/w20/sa.png" class="flag-img" alt="Saudi Arabia">
+                    <img src="https://flagcdn.com/w20/sa.png" class="flag-img" alt="Saudi Arabia Flag">
                     <span class="country-name">Saudi Arabia (SAR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('JPY', 'https://flagcdn.com/w20/jp.png')">
-                    <img src="https://flagcdn.com/w20/jp.png" class="flag-img" alt="Japan">
+                    <img src="https://flagcdn.com/w20/jp.png" class="flag-img" alt="Japan Flag">
                     <span class="country-name">Japan (¥ JPY)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('CNY', 'https://flagcdn.com/w20/cn.png')">
-                    <img src="https://flagcdn.com/w20/cn.png" class="flag-img" alt="China">
+                    <img src="https://flagcdn.com/w20/cn.png" class="flag-img" alt="China Flag">
                     <span class="country-name">China (¥ CNY)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('KRW', 'https://flagcdn.com/w20/kr.png')">
-                    <img src="https://flagcdn.com/w20/kr.png" class="flag-img" alt="South Korea">
+                    <img src="https://flagcdn.com/w20/kr.png" class="flag-img" alt="South Korea Flag">
                     <span class="country-name">South Korea (₩ KRW)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('SGD', 'https://flagcdn.com/w20/sg.png')">
-                    <img src="https://flagcdn.com/w20/sg.png" class="flag-img" alt="Singapore">
+                    <img src="https://flagcdn.com/w20/sg.png" class="flag-img" alt="Singapore Flag">
                     <span class="country-name">Singapore (S$ SGD)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('NZD', 'https://flagcdn.com/w20/nz.png')">
-                    <img src="https://flagcdn.com/w20/nz.png" class="flag-img" alt="New Zealand">
+                    <img src="https://flagcdn.com/w20/nz.png" class="flag-img" alt="New Zealand Flag">
                     <span class="country-name">New Zealand (NZ$ NZD)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('BRL', 'https://flagcdn.com/w20/br.png')">
-                    <img src="https://flagcdn.com/w20/br.png" class="flag-img" alt="Brazil">
+                    <img src="https://flagcdn.com/w20/br.png" class="flag-img" alt="Brazil Flag">
                     <span class="country-name">Brazil (R$ BRL)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('RUB', 'https://flagcdn.com/w20/ru.png')">
-                    <img src="https://flagcdn.com/w20/ru.png" class="flag-img" alt="Russia">
+                    <img src="https://flagcdn.com/w20/ru.png" class="flag-img" alt="Russia Flag">
                     <span class="country-name">Russia (₽ RUB)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('MXN', 'https://flagcdn.com/w20/mx.png')">
-                    <img src="https://flagcdn.com/w20/mx.png" class="flag-img" alt="Mexico">
+                    <img src="https://flagcdn.com/w20/mx.png" class="flag-img" alt="Mexico Flag">
                     <span class="country-name">Mexico ($ MXN)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('ZAR', 'https://flagcdn.com/w20/za.png')">
-                    <img src="https://flagcdn.com/w20/za.png" class="flag-img" alt="South Africa">
+                    <img src="https://flagcdn.com/w20/za.png" class="flag-img" alt="South Africa Flag">
                     <span class="country-name">South Africa (R ZAR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('CHF', 'https://flagcdn.com/w20/ch.png')">
-                    <img src="https://flagcdn.com/w20/ch.png" class="flag-img" alt="Switzerland">
+                    <img src="https://flagcdn.com/w20/ch.png" class="flag-img" alt="Switzerland Flag">
                     <span class="country-name">Switzerland (CHF)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('SEK', 'https://flagcdn.com/w20/se.png')">
-                    <img src="https://flagcdn.com/w20/se.png" class="flag-img" alt="Sweden">
+                    <img src="https://flagcdn.com/w20/se.png" class="flag-img" alt="Sweden Flag">
                     <span class="country-name">Sweden (kr SEK)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('NOK', 'https://flagcdn.com/w20/no.png')">
-                    <img src="https://flagcdn.com/w20/no.png" class="flag-img" alt="Norway">
+                    <img src="https://flagcdn.com/w20/no.png" class="flag-img" alt="Norway Flag">
                     <span class="country-name">Norway (kr NOK)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('DKK', 'https://flagcdn.com/w20/dk.png')">
-                    <img src="https://flagcdn.com/w20/dk.png" class="flag-img" alt="Denmark">
+                    <img src="https://flagcdn.com/w20/dk.png" class="flag-img" alt="Denmark Flag">
                     <span class="country-name">Denmark (kr DKK)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('PLN', 'https://flagcdn.com/w20/pl.png')">
-                    <img src="https://flagcdn.com/w20/pl.png" class="flag-img" alt="Poland">
+                    <img src="https://flagcdn.com/w20/pl.png" class="flag-img" alt="Poland Flag">
                     <span class="country-name">Poland (zł PLN)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('CZK', 'https://flagcdn.com/w20/cz.png')">
-                    <img src="https://flagcdn.com/w20/cz.png" class="flag-img" alt="Czech Republic">
+                    <img src="https://flagcdn.com/w20/cz.png" class="flag-img" alt="Czech Republic Flag">
                     <span class="country-name">Czechia (Kč CZK)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('HUF', 'https://flagcdn.com/w20/hu.png')">
-                    <img src="https://flagcdn.com/w20/hu.png" class="flag-img" alt="Hungary">
+                    <img src="https://flagcdn.com/w20/hu.png" class="flag-img" alt="Hungary Flag">
                     <span class="country-name">Hungary (Ft HUF)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('TRY', 'https://flagcdn.com/w20/tr.png')">
-                    <img src="https://flagcdn.com/w20/tr.png" class="flag-img" alt="Turkey">
+                    <img src="https://flagcdn.com/w20/tr.png" class="flag-img" alt="Turkey Flag">
                     <span class="country-name">Turkey (₺ TRY)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('ILS', 'https://flagcdn.com/w20/il.png')">
-                    <img src="https://flagcdn.com/w20/il.png" class="flag-img" alt="Israel">
+                    <img src="https://flagcdn.com/w20/il.png" class="flag-img" alt="Israel Flag">
                     <span class="country-name">Israel (₪ ILS)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('MYR', 'https://flagcdn.com/w20/my.png')">
-                    <img src="https://flagcdn.com/w20/my.png" class="flag-img" alt="Malaysia">
+                    <img src="https://flagcdn.com/w20/my.png" class="flag-img" alt="Malaysia Flag">
                     <span class="country-name">Malaysia (RM MYR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('THB', 'https://flagcdn.com/w20/th.png')">
-                    <img src="https://flagcdn.com/w20/th.png" class="flag-img" alt="Thailand">
+                    <img src="https://flagcdn.com/w20/th.png" class="flag-img" alt="Thailand Flag">
                     <span class="country-name">Thailand (฿ THB)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('IDR', 'https://flagcdn.com/w20/id.png')">
-                    <img src="https://flagcdn.com/w20/id.png" class="flag-img" alt="Indonesia">
+                    <img src="https://flagcdn.com/w20/id.png" class="flag-img" alt="Indonesia Flag">
                     <span class="country-name">Indonesia (Rp IDR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('PHP', 'https://flagcdn.com/w20/ph.png')">
-                    <img src="https://flagcdn.com/w20/ph.png" class="flag-img" alt="Philippines">
+                    <img src="https://flagcdn.com/w20/ph.png" class="flag-img" alt="Philippines Flag">
                     <span class="country-name">Philippines (₱ PHP)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('VND', 'https://flagcdn.com/w20/vn.png')">
-                    <img src="https://flagcdn.com/w20/vn.png" class="flag-img" alt="Vietnam">
+                    <img src="https://flagcdn.com/w20/vn.png" class="flag-img" alt="Vietnam Flag">
                     <span class="country-name">Vietnam (₫ VND)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('PKR', 'https://flagcdn.com/w20/pk.png')">
-                    <img src="https://flagcdn.com/w20/pk.png" class="flag-img" alt="Pakistan">
+                    <img src="https://flagcdn.com/w20/pk.png" class="flag-img" alt="Pakistan Flag">
                     <span class="country-name">Pakistan (Rs PKR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('BDT', 'https://flagcdn.com/w20/bd.png')">
-                    <img src="https://flagcdn.com/w20/bd.png" class="flag-img" alt="Bangladesh">
+                    <img src="https://flagcdn.com/w20/bd.png" class="flag-img" alt="Bangladesh Flag">
                     <span class="country-name">Bangladesh (৳ BDT)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('LKR', 'https://flagcdn.com/w20/lk.png')">
-                    <img src="https://flagcdn.com/w20/lk.png" class="flag-img" alt="Sri Lanka">
+                    <img src="https://flagcdn.com/w20/lk.png" class="flag-img" alt="Sri Lanka Flag">
                     <span class="country-name">Sri Lanka (Rs LKR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('NPR', 'https://flagcdn.com/w20/np.png')">
-                    <img src="https://flagcdn.com/w20/np.png" class="flag-img" alt="Nepal">
+                    <img src="https://flagcdn.com/w20/np.png" class="flag-img" alt="Nepal Flag">
                     <span class="country-name">Nepal (Rs NPR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('EGP', 'https://flagcdn.com/w20/eg.png')">
-                    <img src="https://flagcdn.com/w20/eg.png" class="flag-img" alt="Egypt">
+                    <img src="https://flagcdn.com/w20/eg.png" class="flag-img" alt="Egypt Flag">
                     <span class="country-name">Egypt (E£ EGP)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('NGN', 'https://flagcdn.com/w20/ng.png')">
-                    <img src="https://flagcdn.com/w20/ng.png" class="flag-img" alt="Nigeria">
+                    <img src="https://flagcdn.com/w20/ng.png" class="flag-img" alt="Nigeria Flag">
                     <span class="country-name">Nigeria (₦ NGN)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('KES', 'https://flagcdn.com/w20/ke.png')">
-                    <img src="https://flagcdn.com/w20/ke.png" class="flag-img" alt="Kenya">
+                    <img src="https://flagcdn.com/w20/ke.png" class="flag-img" alt="Kenya Flag">
                     <span class="country-name">Kenya (KSh KES)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('ARS', 'https://flagcdn.com/w20/ar.png')">
-                    <img src="https://flagcdn.com/w20/ar.png" class="flag-img" alt="Argentina">
+                    <img src="https://flagcdn.com/w20/ar.png" class="flag-img" alt="Argentina Flag">
                     <span class="country-name">Argentina ($ ARS)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('CLP', 'https://flagcdn.com/w20/cl.png')">
-                    <img src="https://flagcdn.com/w20/cl.png" class="flag-img" alt="Chile">
+                    <img src="https://flagcdn.com/w20/cl.png" class="flag-img" alt="Chile Flag">
                     <span class="country-name">Chile ($ CLP)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('COP', 'https://flagcdn.com/w20/co.png')">
-                    <img src="https://flagcdn.com/w20/co.png" class="flag-img" alt="Colombia">
+                    <img src="https://flagcdn.com/w20/co.png" class="flag-img" alt="Colombia Flag">
                     <span class="country-name">Colombia ($ COP)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('PEN', 'https://flagcdn.com/w20/pe.png')">
-                    <img src="https://flagcdn.com/w20/pe.png" class="flag-img" alt="Peru">
+                    <img src="https://flagcdn.com/w20/pe.png" class="flag-img" alt="Peru Flag">
                     <span class="country-name">Peru (S/ PEN)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('QAR', 'https://flagcdn.com/w20/qa.png')">
-                    <img src="https://flagcdn.com/w20/qa.png" class="flag-img" alt="Qatar">
+                    <img src="https://flagcdn.com/w20/qa.png" class="flag-img" alt="Qatar Flag">
                     <span class="country-name">Qatar (QR QAR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('KWD', 'https://flagcdn.com/w20/kw.png')">
-                    <img src="https://flagcdn.com/w20/kw.png" class="flag-img" alt="Kuwait">
+                    <img src="https://flagcdn.com/w20/kw.png" class="flag-img" alt="Kuwait Flag">
                     <span class="country-name">Kuwait (KD KWD)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('BHD', 'https://flagcdn.com/w20/bh.png')">
-                    <img src="https://flagcdn.com/w20/bh.png" class="flag-img" alt="Bahrain">
+                    <img src="https://flagcdn.com/w20/bh.png" class="flag-img" alt="Bahrain Flag">
                     <span class="country-name">Bahrain (BD BHD)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('OMR', 'https://flagcdn.com/w20/om.png')">
-                    <img src="https://flagcdn.com/w20/om.png" class="flag-img" alt="Oman">
+                    <img src="https://flagcdn.com/w20/om.png" class="flag-img" alt="Oman Flag">
                     <span class="country-name">Oman (RO OMR)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('JOD', 'https://flagcdn.com/w20/jo.png')">
-                    <img src="https://flagcdn.com/w20/jo.png" class="flag-img" alt="Jordan">
+                    <img src="https://flagcdn.com/w20/jo.png" class="flag-img" alt="Jordan Flag">
                     <span class="country-name">Jordan (JD JOD)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('UAH', 'https://flagcdn.com/w20/ua.png')">
-                    <img src="https://flagcdn.com/w20/ua.png" class="flag-img" alt="Ukraine">
+                    <img src="https://flagcdn.com/w20/ua.png" class="flag-img" alt="Ukraine Flag">
                     <span class="country-name">Ukraine (₴ UAH)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
                 <div class="dropdown-item" onclick="selectCurrency('RON', 'https://flagcdn.com/w20/ro.png')">
-                    <img src="https://flagcdn.com/w20/ro.png" class="flag-img" alt="Romania">
+                    <img src="https://flagcdn.com/w20/ro.png" class="flag-img" alt="Romania Flag">
                     <span class="country-name">Romania (lei RON)</span>
-                    <span class="checkmark">✓</span>
+                    <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
             </div>
         </div>
@@ -367,13 +366,13 @@
 
                     <div class="input-group">
                         <div class="label-row">
-                            <label>LOAN AMOUNT (<span class="currSymbol">₹</span>)</label>
+                            <label for="loanValue">LOAN AMOUNT (<span class="currSymbol">₹</span>)</label>
                             <div class="input-wrapper">
                                 <span class="currSymbol">₹</span>
-                                <input type="number" id="loanValue" class="value-input" value="300000" style="width: 120px;">
+                                <input type="number" id="loanValue" class="value-input" value="300000" style="width: 120px;" aria-label="Loan Amount Value">
                             </div>
                         </div>
-                        <input type="range" id="loan" min="10000" max="500000000" step="50000" value="300000">
+                        <input type="range" id="loan" min="10000" max="500000000" step="50000" value="300000" aria-label="Loan Amount Slider">
                         <div class="range-labels">
                             <span>10K</span>
                             <span id="maxLabel">50Cr</span>
@@ -382,13 +381,13 @@
 
                     <div class="input-group">
                         <div class="label-row">
-                            <label>INTEREST RATE (%)</label>
+                            <label for="rateValue">INTEREST RATE (%)</label>
                             <div class="input-wrapper">
-                                <input type="number" id="rateValue" class="value-input" value="6.5" step="0.1">
+                                <input type="number" id="rateValue" class="value-input" value="6.5" step="0.1" aria-label="Interest Rate Value">
                                 <span>%</span>
                             </div>
                         </div>
-                        <input type="range" id="rate" min="0.1" max="50" step="0.1" value="6.5">
+                        <input type="range" id="rate" min="0.1" max="50" step="0.1" value="6.5" aria-label="Interest Rate Slider">
                         <div class="range-labels">
                             <span>0.1%</span>
                             <span>50%</span>
@@ -397,13 +396,13 @@
 
                     <div class="input-group">
                         <div class="label-row">
-                            <label>LOAN TENURE (YEARS)</label>
+                            <label for="timeValue">LOAN TENURE (YEARS)</label>
                             <div class="input-wrapper">
-                                <input type="number" id="timeValue" class="value-input" value="20">
+                                <input type="number" id="timeValue" class="value-input" value="20" aria-label="Loan Tenure Value">
                                 <span>Yr</span>
                             </div>
                         </div>
-                        <input type="range" id="time" min="1" max="40" step="1" value="20">
+                        <input type="range" id="time" min="1" max="40" step="1" value="20" aria-label="Loan Tenure Slider">
                         <div class="range-labels">
                             <span>1 Yr</span>
                             <span>40 Yrs</span>
@@ -418,7 +417,7 @@
                 <h2 id="result">₹0.00</h2>
 
                 <div class="chart-box" style="max-width: 220px; margin: 15px auto;">
-                    <canvas id="myChart"></canvas>
+                    <canvas id="myChart" aria-label="EMI Breakdown Chart" role="img"></canvas>
                 </div>
 
                 <div class="summary-list">
@@ -437,13 +436,13 @@
                 </div>
 
                 <div style="margin-top: 15px; margin-bottom: 15px;">
-                    <button onclick="shareCalculator()" style="width: 100%; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">🔗 Share Calculator</button>
+                    <button onclick="shareCalculator()" style="width: 100%; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;" aria-label="Share Calculator">🔗 Share Calculator</button>
                 </div>
 
                 <div class="schedule-main-header">
                     <p class="amort-header-title">Your Amortization Details (Yearly/Monthly)</p>
-                    <button id="toggleAmortBtn" class="toggle-amort-btn" onclick="toggleAmortSection()">
-                        <span id="amortIcon" class="circle-icon">+</span>
+                    <button id="toggleAmortBtn" class="toggle-amort-btn" onclick="toggleAmortSection()" aria-label="Toggle Amortization Details">
+                        <span id="amortIcon" class="circle-icon" aria-hidden="true">+</span>
                     </button>
                 </div>
             </div>
@@ -453,7 +452,7 @@
             <div id="scheduleContainer" class="schedule-container"></div>
             
             <div id="loadMoreBox" class="load-more-box" style="display: none;">
-                <button class="btn-load-more" onclick="loadMoreYears()">Load More</button>
+                <button class="btn-load-more" onclick="loadMoreYears()" aria-label="Load More Years">Load More</button>
             </div>
         </div>
 
