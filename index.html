@@ -9,7 +9,6 @@
     <!-- Favicon / Custom Logo -->
     <link rel="icon" type="image/png" href="logo.png">
     
-    <!-- Custom Domain lene ke baad 'khushicodes-web.github.io' ko apne custom domain se badlein -->
     <link rel="canonical" href="https://khushicodes-web.github.io/emi-calculator/">
     
     <!-- Social Media Sharing Meta Tags -->
@@ -19,7 +18,50 @@
     <meta property="og:url" content="https://khushicodes-web.github.io/emi-calculator/">
     <meta property="og:image" content="https://khushicodes-web.github.io/emi-calculator/preview-image.png">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- ⚡ CRITICAL CSS INLINE (Above-the-fold render speed boost) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .main-section {
+            display: flex;
+            gap: 20px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .left, .right {
+            flex: 1;
+        }
+        h1 {
+            font-size: 24px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+    </style>
+
+    <!-- Non-Blocking External CSS Load -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Schema Structured Data -->
