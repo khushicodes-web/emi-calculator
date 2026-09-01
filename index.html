@@ -13,8 +13,9 @@
     <!-- Favicon / Custom Logo -->
     <link rel="icon" type="image/png" href="logo.png">
     
-    <!-- Preload critical favicon for instant rendering -->
+    <!-- Preload critical assets for instant LCP rendering -->
     <link rel="preload" href="logo.png" as="image" type="image/png">
+    <link rel="preload" href="preview-image.png" as="image" type="image/png">
     
     <link rel="canonical" href="https://khushicodes-web.github.io/emi-calculator/">
     
@@ -24,46 +25,6 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://khushicodes-web.github.io/emi-calculator/">
     <meta property="og:image" content="https://khushicodes-web.github.io/emi-calculator/preview-image.png">
-
-    <!-- ⚡ CRITICAL CSS INLINE (Above-the-fold render speed boost) -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #ffffff;
-            padding: 12px 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .main-section {
-            display: flex;
-            gap: 20px;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .left, .right {
-            flex: 1;
-        }
-        h1 {
-            font-size: 24px;
-            color: #0f172a;
-            margin-bottom: 8px;
-        }
-    </style>
 
     <!-- External CSS Load -->
     <link rel="stylesheet" href="style.css">
