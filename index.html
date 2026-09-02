@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://khushicodes-web.github.io/emi-calculator/">
     <meta property="og:image" content="https://khushicodes-web.github.io/emi-calculator/preview-image.png">
 
-    <!-- ⚡ 100% INLINE CSS (Zero Render-Blocking, Instant Desktop & Mobile Speed) -->
+    <!-- ⚡ 100% INLINE CSS (Zero Render-Blocking, Instant Speed) -->
     <style>
         * {
             margin: 0;
@@ -32,7 +32,7 @@
         }
         body {
             background-color: #f4f6f9;
-            color: #333333;
+            color: #1f2937;
             padding-bottom: 50px;
             -webkit-font-smoothing: antialiased;
         }
@@ -66,7 +66,7 @@
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
-            color: #6b7280;
+            color: #4b5563;
             padding: 6px 12px;
             transition: all 0.2s;
             white-space: nowrap;
@@ -107,13 +107,13 @@
         }
         .subtitle {
             font-size: 13px;
-            color: #6b7280;
+            color: #4b5563;
             line-height: 1.5;
             margin-bottom: 25px;
         }
         .params-box h3 {
             font-size: 15px;
-            color: #374151;
+            color: #1f2937;
             margin-bottom: 20px;
         }
         .input-group {
@@ -128,7 +128,7 @@
         .label-row label {
             font-size: 11px;
             font-weight: 700;
-            color: #6b7280;
+            color: #374151;
             letter-spacing: 0.5px;
         }
         .input-wrapper {
@@ -173,7 +173,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 11px;
-            color: #9ca3af;
+            color: #4b5563;
             margin-top: 6px;
         }
         .right {
@@ -190,7 +190,7 @@
         .card-subtitle {
             font-size: 10px;
             font-weight: 700;
-            color: #6b7280;
+            color: #9ca3af;
             letter-spacing: 1px;
         }
         .emi-title {
@@ -373,9 +373,6 @@
         }
     </style>
 
-    <!-- Chart.js with defer for performance optimization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-
     <!-- Schema Structured Data -->
     <script type="application/ld+json">
     {
@@ -396,37 +393,37 @@
             <span class="logo-icon" aria-hidden="true">📊</span> EMI Calculator
         </div>
 
-        <ul class="nav-tabs">
-            <li class="tab-link active"><a href="index.html" style="text-decoration:none; color:inherit;" aria-current="page">Home Loan</a></li>
-            <li class="tab-link"><a href="car-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Car Loan</a></li>
-            <li class="tab-link"><a href="personal-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Personal Loan</a></li>
-            <li class="tab-link"><a href="education-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Education Loan</a></li>
+        <ul class="nav-tabs" role="menubar">
+            <li class="tab-link active" role="none"><a href="index.html" role="menuitem" style="text-decoration:none; color:inherit;" aria-current="page">Home Loan</a></li>
+            <li class="tab-link" role="none"><a href="car-loan-emi-calculator.html" role="menuitem" style="text-decoration:none; color:inherit;">Car Loan</a></li>
+            <li class="tab-link" role="none"><a href="personal-loan-emi-calculator.html" role="menuitem" style="text-decoration:none; color:inherit;">Personal Loan</a></li>
+            <li class="tab-link" role="none"><a href="education-loan-emi-calculator.html" role="menuitem" style="text-decoration:none; color:inherit;">Education Loan</a></li>
         </ul>
 
         <div class="custom-dropdown-container">
-            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()" aria-expanded="false" aria-label="Select Currency">
+            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()" aria-expanded="false" aria-haspopup="true" aria-label="Select Currency">
                 <img id="selectedFlagImg" src="https://flagcdn.com/w20/in.png" alt="India Flag" class="btn-flag-img">
                 <span id="selectedCode" style="font-weight: bold; margin-left: 4px;">INR</span>
                 <span style="font-size: 10px; margin-left: 4px;" aria-hidden="true">▼</span>
             </button>
 
-            <div class="custom-dropdown-menu" id="currencyMenu">
-                <div class="dropdown-item active" onclick="selectCurrency('INR', 'https://flagcdn.com/w20/in.png', event)">
+            <div class="custom-dropdown-menu" id="currencyMenu" role="menu">
+                <div class="dropdown-item active" role="menuitem" onclick="selectCurrency('INR', 'https://flagcdn.com/w20/in.png', event)">
                     <img src="https://flagcdn.com/w20/in.png" class="flag-img" alt="India Flag">
                     <span class="country-name">India (₹ INR)</span>
                     <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('USD', 'https://flagcdn.com/w20/us.png', event)">
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('USD', 'https://flagcdn.com/w20/us.png', event)">
                     <img src="https://flagcdn.com/w20/us.png" class="flag-img" alt="USA Flag">
                     <span class="country-name">USA ($ USD)</span>
                     <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('EUR', 'https://flagcdn.com/w20/eu.png', event)">
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('EUR', 'https://flagcdn.com/w20/eu.png', event)">
                     <img src="https://flagcdn.com/w20/eu.png" class="flag-img" alt="Europe Flag">
                     <span class="country-name">Europe (€ EUR)</span>
                     <span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('GBP', 'https://flagcdn.com/w20/gb.png', event)">
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('GBP', 'https://flagcdn.com/w20/gb.png', event)">
                     <img src="https://flagcdn.com/w20/gb.png" class="flag-img" alt="UK Flag">
                     <span class="country-name">UK (£ GBP)</span>
                     <span class="checkmark" aria-hidden="true">✓</span>
@@ -546,6 +543,7 @@
         </footer>
     </div>
 
+    <!-- Script file linked -->
     <script src="script.js"></script>
 </body>
 </html>
