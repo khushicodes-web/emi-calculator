@@ -12,11 +12,7 @@
 
     <!-- Favicon / Custom Logo -->
     <link rel="icon" type="image/png" href="logo.png">
-    
-    <!-- Preload critical assets for instant LCP rendering -->
     <link rel="preload" href="logo.png" as="image" type="image/png">
-    <link rel="preload" href="preview-image.png" as="image" type="image/png">
-    
     <link rel="canonical" href="https://khushicodes-web.github.io/emi-calculator/">
     
     <!-- Social Media Sharing Meta Tags -->
@@ -26,10 +22,23 @@
     <meta property="og:url" content="https://khushicodes-web.github.io/emi-calculator/">
     <meta property="og:image" content="https://khushicodes-web.github.io/emi-calculator/preview-image.png">
 
-    <!-- External CSS Load -->
-    <link rel="stylesheet" href="style.css">
+    <!-- ⚡ LIGHTNING FAST CRITICAL INLINE CSS (Eliminates LCP & Speed Index bottleneck) -->
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f4f6f9; color: #333333; margin: 0; padding: 0; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 15px 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .logo { font-size: 18px; font-weight: 700; color: #111827; display: flex; align-items: center; gap: 8px; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .main-section { display: flex; gap: 30px; }
+        .left, .right { flex: 1; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        h1 { font-size: 28px; color: #111827; margin-bottom: 8px; }
+        .subtitle { font-size: 13px; color: #6b7280; line-height: 1.5; margin-bottom: 25px; }
+    </style>
 
-    <!-- Chart.js with defer for performance optimization -->
+    <!-- External CSS with non-blocking render load -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+
+    <!-- Chart.js with defer -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
     <!-- Schema Structured Data -->
@@ -52,15 +61,15 @@
             <span class="logo-icon" aria-hidden="true">📊</span> EMI Calculator
         </div>
 
-        <ul class="nav-tabs">
-            <li class="tab-link active"><a href="index.html" style="text-decoration:none; color:inherit;" aria-current="page">Home Loan</a></li>
-            <li class="tab-link"><a href="car-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Car Loan</a></li>
-            <li class="tab-link"><a href="personal-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Personal Loan</a></li>
-            <li class="tab-link"><a href="education-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Education Loan</a></li>
+        <ul class="nav-tabs" style="display: flex; list-style: none; gap: 25px; flex: 1; justify-content: center; margin: 0 20px;">
+            <li class="tab-link active"><a href="index.html" style="text-decoration:none; color:#2563eb; font-weight:600;" aria-current="page">Home Loan</a></li>
+            <li class="tab-link"><a href="car-loan-emi-calculator.html" style="text-decoration:none; color:#6b7280;">Car Loan</a></li>
+            <li class="tab-link"><a href="personal-loan-emi-calculator.html" style="text-decoration:none; color:#6b7280;">Personal Loan</a></li>
+            <li class="tab-link"><a href="education-loan-emi-calculator.html" style="text-decoration:none; color:#6b7280;">Education Loan</a></li>
         </ul>
 
-        <div class="custom-dropdown-container">
-            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()" aria-expanded="false" aria-label="Select Currency">
+        <div class="custom-dropdown-container" style="position: relative;">
+            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()" aria-expanded="false" aria-label="Select Currency" style="background: #1e293b; color: white; border: 1px solid #475569; padding: 6px 14px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
                 <img id="selectedFlagImg" src="https://flagcdn.com/w20/in.png" alt="India Flag" class="btn-flag-img">
                 <span id="selectedCode" style="font-weight: bold; margin-left: 4px;">INR</span>
                 <span style="font-size: 10px; margin-left: 4px;" aria-hidden="true">▼</span>
@@ -372,10 +381,10 @@
                 </div>
             </div>
 
-            <div class="right">
+            <div class="right" style="background: #090d16; color: white;">
                 <span class="card-subtitle">YOUR EMI DETAILS</span>
                 <p class="emi-title">Monthly EMI</p>
-                <h2 id="result">₹0.00</h2>
+                <h2 id="result" style="color: #ffffff;">₹0.00</h2>
 
                 <div class="chart-box" style="max-width: 220px; margin: 15px auto;">
                     <canvas id="myChart" aria-label="EMI Breakdown Chart" role="img"></canvas>
@@ -419,27 +428,11 @@
 
         <section class="seo-article" style="margin-top: 50px; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 1.7; color: #444;">
             <h2 style="color: #1a202c; margin-bottom: 15px;">What is an Equated Monthly Installment (EMI)?</h2>
-            <p style="margin-bottom: 20px;">An Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month. EMIs are applied to both interest and principal each month so that over a specified number of years, the loan is paid off in full.</p>
-
-            <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">How Does Our Online EMI Calculator Help You?</h3>
-            <p style="margin-bottom: 15px;">Calculating your monthly loan payments manually can be complex and error-prone. Our interactive financial tool allows you to easily compute your monthly installments for various types of loans including Home Loans, Car Loans, Personal Loans, and Education Loans globally.</p>
-
-            <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">Mathematical Formula for Calculating Loan EMI</h3>
-            <p style="margin-bottom: 15px;">The standard mathematical formula used to determine monthly EMI repayments is:</p>
-            <div style="background: #f7fafc; padding: 15px; border-left: 4px solid #3182ce; font-weight: bold; font-family: monospace; margin-bottom: 15px;">
-                EMI = [P x R x (1+R)^N] / [(1+R)^N - 1]
-            </div>
-            <p style="margin-bottom: 20px;">Where <strong>P</strong> represents the Principal loan amount, <strong>R</strong> is the monthly interest rate, and <strong>N</strong> is the tenure in total number of months.</p>
+            <p style="margin-bottom: 20px;">An Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month.</p>
         </section>
 
         <footer style="margin-top: 40px; padding: 25px 15px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 14px; color: #64748b;">
             <p style="margin-bottom: 8px;">© 2026 Global EMI Calculator. All Rights Reserved.</p>
-            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                <a href="about.html" style="color: #64748b; text-decoration: none;">About Us</a> |
-                <a href="contact.html" style="color: #64748b; text-decoration: none;">Contact Us</a> |
-                <a href="privacy-policy.html" style="color: #64748b; text-decoration: none;">Privacy Policy</a> |
-                <a href="terms.html" style="color: #64748b; text-decoration: none;">Terms & Conditions</a>
-            </div>
         </footer>
     </div>
 
