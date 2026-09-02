@@ -1,31 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Global EMI Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .page-container { max-width: 800px; margin: 40px auto; padding: 24px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        h1, h2 { color: #0f172a; }
-        p { color: #475569; line-height: 1.7; font-size: 15px; margin-bottom: 16px; }
-        a.back-link { display: inline-block; margin-bottom: 20px; color: #2563eb; text-decoration: none; font-weight: 600; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Global EMI Calculator</title>
+    <meta name="description" content="Learn more about Global EMI Calculator, our mission, and how we help users plan loans accurately.">
+    <link rel="canonical" href="https://emicalculator4u.com/about.html">
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            color: #1f2937;
+            padding-bottom: 50px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: relative;
+        }
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .page-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            line-height: 1.8;
+        }
+        h1, h2 { color: #0f172a; }
+        h1 { margin-bottom: 20px; font-size: 28px; }
+        h2 { margin-top: 30px; margin-bottom: 10px; font-size: 20px; }
+        p { color: #475569; line-height: 1.7; font-size: 15px; margin-bottom: 16px; }
+        a.back-link { display: inline-block; margin-bottom: 20px; color: #2563eb; text-decoration: none; font-weight: 600; font-size: 14px; }
+        a.back-link:hover { text-decoration: underline; }
+        footer {
+            margin-top: 40px;
+            padding: 25px 15px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            font-size: 14px;
+            color: #64748b;
+        }
+        footer a { color: #64748b; text-decoration: none; margin: 0 5px; }
+        footer a:hover { color: #2563eb; }
+        @media (max-width: 768px) {
+            .navbar { padding: 12px 15px; }
+            .page-container { margin: 20px 15px; padding: 20px; }
+        }
+    </style>
 </head>
-<body style="background-color: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-    <div class="page-container">
-        <a href="index.html" class="back-link">← Back to Calculator</a>
-        <h1>About Us</h1>
-        <p>Welcome to <strong>Global EMI Calculator</strong>, your trusted financial utility designed to bring clarity, transparency, and precision to your loan and installment calculations.</p>
-        
-        <h2>Our Mission</h2>
-        <p>Our primary objective is to make complex financial decision-making simple and accessible. Whether planning a home purchase, comparing personal loan options, or financing higher education, our tools provide instant, real-time calculations alongside visual breakdown charts and amortization insights.</p>
-        
-        <h2>What We Offer</h2>
-        <p>We provide accurate mathematical computation models covering Home Loans, Car Loans, Personal Loans, and Education Loans. Users can dynamically test various principal amounts, interest rates, and tenures to optimize their monthly budget and save on long-term borrowing costs.</p>
-        
-        <h2>Transparency & Accuracy</h2>
-        <p>Our tools utilize standard reducing-balance and mathematical compounding formulas to maintain exact precision. We continuously update our interface to offer a fast, clean, and distraction-free user experience.</p>
-    </div>
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="logo">
+            <span aria-hidden="true">📊</span> EMI Calculator
+        </a>
+    </nav>
+
+    <div class="page-container">
+        <a href="index.html" class="back-link">← Back to Calculator</a>
+        <h1>About Us</h1>
+        <p>Welcome to <strong>Global EMI Calculator</strong>, your trusted financial utility designed to bring clarity, transparency, and precision to your loan and installment calculations.</p>
+        
+        <h2>Our Mission</h2>
+        <p>Our primary objective is to make complex financial decision-making simple and accessible. Whether planning a home purchase, comparing personal loan options, or financing higher education, our tools provide instant, real-time calculations alongside visual breakdown charts and amortization insights.</p>
+        
+        <h2>What We Offer</h2>
+        <p>We provide accurate mathematical computation models covering Home Loans, Car Loans, Personal Loans, and Education Loans. Users can dynamically test various principal amounts, interest rates, and tenures to optimize their monthly budget and save on long-term borrowing costs.</p>
+        
+        <h2>Transparency & Accuracy</h2>
+        <p>Our tools utilize standard reducing-balance and mathematical compounding formulas to maintain exact precision. We continuously update our interface to offer a fast, clean, and distraction-free user experience.</p>
+    </div>
+
+    <footer>
+        <p style="margin-bottom: 8px;">© 2026 Global EMI Calculator. All Rights Reserved.</p>
+        <p style="font-size: 13px;">
+            <a href="about.html">About Us</a> | 
+            <a href="contact.html">Contact Us</a> | 
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms & Conditions</a>
+        </p>
+    </footer>
+
 </body>
-</html>   
+</html>
