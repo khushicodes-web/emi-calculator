@@ -224,36 +224,51 @@ function switchLoan(type, event) {
     calculateEMI();
 }
 
-function updateChart(principal, interest) {
-    let chartCanvas = document.getElementById("myChart");
-    if (!chartCanvas) return;
-    let ctx = chartCanvas.getContext("2d");
-    if (chart) chart.destroy();
+// Lazy Load Chart.js Library for 100/100 Performance Score
+function loadChartLibrary(callback) {
+    if (window.Chart) {
+        callback();
+        return;
+    }
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/chart.js";
+    script.async = true;
+    script.onload = callback;
+    document.head.appendChild(script);
+}
 
-    chart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Principal Loan Amount', 'Total Interest'],
-            datasets: [{
-                data: [principal, interest],
-                backgroundColor: ['#2563eb', '#00d09c'],
-                borderWidth: 0
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        color: '#ffffff',
-                        boxWidth: 12,
-                        padding: 15,
-                        font: { size: 12, weight: 'bold' }
+function updateChart(principal, interest) {
+    loadChartLibrary(() => {
+        let chartCanvas = document.getElementById("myChart");
+        if (!chartCanvas) return;
+        let ctx = chartCanvas.getContext("2d");
+        if (chart) chart.destroy();
+
+        chart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Principal Loan Amount', 'Total Interest'],
+                datasets: [{
+                    data: [principal, interest],
+                    backgroundColor: ['#2563eb', '#00d09c'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#ffffff',
+                            boxWidth: 12,
+                            padding: 15,
+                            font: { size: 12, weight: 'bold' }
+                        }
                     }
                 }
             }
-        }
+        });
     });
 }
 
