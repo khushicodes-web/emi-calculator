@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Loan EMI Calculator - Instant Monthly Payment Estimation</title>
+    <title>Personal Loan EMI Calculator - EMICalculator4u</title>
     <meta name="description" content="Calculate monthly installment repayments, total interest payable, and amortization schedules for instant personal loans with our free tool.">
     
     <link rel="preconnect" href="https://ipapi.co">
@@ -15,7 +15,7 @@
     <link rel="canonical" href="https://emicalculator4u.com/personal-loan-emi-calculator.html">
     
     <!-- Social Media Sharing Meta Tags -->
-    <meta property="og:title" content="Personal Loan EMI Calculator - Free Repayment Tool">
+    <meta property="og:title" content="Personal Loan EMI Calculator - EMICalculator4u">
     <meta property="og:description" content="Calculate monthly personal loan EMIs and check total interest schedules instantly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://emicalculator4u.com/personal-loan-emi-calculator.html">
@@ -239,7 +239,7 @@
                         else if (countryCode === 'CA') { currency = 'CAD'; flagUrl = 'https://flagcdn.com/w20/ca.png'; }
                         else if (countryCode === 'AUD') { currency = 'AUD'; flagUrl = 'https://flagcdn.com/w20/au.png'; }
                         else if (countryCode === 'AE') { currency = 'AED'; flagUrl = 'https://flagcdn.com/w20/ae.png'; }
-                        else if (countryCode === 'JS') { currency = 'JPY'; flagUrl = 'https://flagcdn.com/w20/jp.png'; }
+                        else if (countryCode === 'JP') { currency = 'JPY'; flagUrl = 'https://flagcdn.com/w20/jp.png'; }
                         else if (countryCode === 'NZ') { currency = 'NZD'; flagUrl = 'https://flagcdn.com/w20/nz.png'; }
                         else if (countryCode === 'CH') { currency = 'CHF'; flagUrl = 'https://flagcdn.com/w20/ch.png'; }
                         else if (countryCode === 'HK') { currency = 'HKD'; flagUrl = 'https://flagcdn.com/w20/hk.png'; }
@@ -248,7 +248,6 @@
                         else if (countryCode === 'ZAR') { currency = 'ZAR'; flagUrl = 'https://flagcdn.com/w20/za.png'; }
                         else if (countryCode === 'KR') { currency = 'KRW'; flagUrl = 'https://flagcdn.com/w20/kr.png'; }
                         else if (countryCode === 'MXN') { currency = 'MXN'; flagUrl = 'https://flagcdn.com/w20/mx.png'; }
-                        else if (countryCode::includes('MX')) { currency = 'MXN'; flagUrl = 'https://flagcdn.com/w20/mx.png'; }
                         else if (countryCode === 'BRL') { currency = 'BRL'; flagUrl = 'https://flagcdn.com/w20/br.png'; }
                         else if (countryCode === 'SEK') { currency = 'SEK'; flagUrl = 'https://flagcdn.com/w20/se.png'; }
                         else if (['DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'PT', 'GR', 'FI', 'IE'].includes(countryCode)) { 
@@ -259,7 +258,7 @@
                             selectCurrency(currency, flagUrl);
                         }
                     })
-                    .catch(files => console.log('IP Location detection skipped'));
+                    .catch(err => console.log('IP Location detection skipped'));
             }, 800);
         });
     </script>
