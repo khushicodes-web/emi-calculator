@@ -46,71 +46,71 @@
             <li class="tab-link"><a href="education-loan-emi-calculator.html" style="text-decoration:none; color:inherit;">Education Loan</a></li>
         </ul>
         <div class="custom-dropdown-container">
-            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()">
+            <button class="custom-dropdown-btn" id="currencyBtn" onclick="toggleCurrencyMenu()" aria-expanded="false" aria-haspopup="true" aria-label="Select Currency">
                 <img id="selectedFlagImg" src="https://flagcdn.com/w20/in.png" alt="India Flag" class="btn-flag-img">
                 <span id="selectedCode" style="font-weight: bold; margin-left: 4px;">INR</span>
-                <span style="font-size: 10px; margin-left: 4px;">▼</span>
+                <span style="font-size: 10px; margin-left: 4px;" aria-hidden="true">▼</span>
             </button>
-            <div class="custom-dropdown-menu" id="currencyMenu">
-                <div class="dropdown-item active" onclick="selectCurrency('INR', 'https://flagcdn.com/w20/in.png')">
-                    <img src="https://flagcdn.com/w20/in.png" class="flag-img" alt="India"><span class="country-name">India (₹ INR)</span><span class="checkmark">✓</span>
+            <div class="custom-dropdown-menu" id="currencyMenu" role="menu">
+                <div class="dropdown-item active" role="menuitem" onclick="selectCurrency('INR', 'https://flagcdn.com/w20/in.png', event)">
+                    <img src="https://flagcdn.com/w20/in.png" class="flag-img" alt="India"><span class="country-name">India (₹ INR)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('USD', 'https://flagcdn.com/w20/us.png')">
-                    <img src="https://flagcdn.com/w20/us.png" class="flag-img" alt="USA"><span class="country-name">USA ($ USD)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('USD', 'https://flagcdn.com/w20/us.png', event)">
+                    <img src="https://flagcdn.com/w20/us.png" class="flag-img" alt="USA"><span class="country-name">USA ($ USD)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('EUR', 'https://flagcdn.com/w20/eu.png')">
-                    <img src="https://flagcdn.com/w20/eu.png" class="flag-img" alt="Europe"><span class="country-name">Europe (€ EUR)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('EUR', 'https://flagcdn.com/w20/eu.png', event)">
+                    <img src="https://flagcdn.com/w20/eu.png" class="flag-img" alt="Europe"><span class="country-name">Europe (€ EUR)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('GBP', 'https://flagcdn.com/w20/gb.png')">
-                    <img src="https://flagcdn.com/w20/gb.png" class="flag-img" alt="UK"><span class="country-name">UK (£ GBP)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('GBP', 'https://flagcdn.com/w20/gb.png', event)">
+                    <img src="https://flagcdn.com/w20/gb.png" class="flag-img" alt="UK"><span class="country-name">UK (£ GBP)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('CAD', 'https://flagcdn.com/w20/ca.png')">
-                    <img src="https://flagcdn.com/w20/ca.png" class="flag-img" alt="Canada"><span class="country-name">Canada (C$ CAD)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('CAD', 'https://flagcdn.com/w20/ca.png', event)">
+                    <img src="https://flagcdn.com/w20/ca.png" class="flag-img" alt="Canada"><span class="country-name">Canada (C$ CAD)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('AUD', 'https://flagcdn.com/w20/au.png')">
-                    <img src="https://flagcdn.com/w20/au.png" class="flag-img" alt="Australia"><span class="country-name">Australia (A$ AUD)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('AUD', 'https://flagcdn.com/w20/au.png', event)">
+                    <img src="https://flagcdn.com/w20/au.png" class="flag-img" alt="Australia"><span class="country-name">Australia (A$ AUD)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('THB', 'https://flagcdn.com/w20/th.png')">
-                    <img src="https://flagcdn.com/w20/th.png" class="flag-img" alt="Thailand"><span class="country-name">Thailand (฿ THB)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('THB', 'https://flagcdn.com/w20/th.png', event)">
+                    <img src="https://flagcdn.com/w20/th.png" class="flag-img" alt="Thailand"><span class="country-name">Thailand (฿ THB)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('AED', 'https://flagcdn.com/w20/ae.png')">
-                    <img src="https://flagcdn.com/w20/ae.png" class="flag-img" alt="UAE"><span class="country-name">UAE (AED)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('AED', 'https://flagcdn.com/w20/ae.png', event)">
+                    <img src="https://flagcdn.com/w20/ae.png" class="flag-img" alt="UAE"><span class="country-name">UAE (AED)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('SGD', 'https://flagcdn.com/w20/sg.png')">
-                    <img src="https://flagcdn.com/w20/sg.png" class="flag-img" alt="Singapore"><span class="country-name">Singapore (S$ SGD)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('SGD', 'https://flagcdn.com/w20/sg.png', event)">
+                    <img src="https://flagcdn.com/w20/sg.png" class="flag-img" alt="Singapore"><span class="country-name">Singapore (S$ SGD)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('JPY', 'https://flagcdn.com/w20/jp.png')">
-                    <img src="https://flagcdn.com/w20/jp.png" class="flag-img" alt="Japan"><span class="country-name">Japan (¥ JPY)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('JPY', 'https://flagcdn.com/w20/jp.png', event)">
+                    <img src="https://flagcdn.com/w20/jp.png" class="flag-img" alt="Japan"><span class="country-name">Japan (¥ JPY)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('NZD', 'https://flagcdn.com/w20/nz.png')">
-                    <img src="https://flagcdn.com/w20/nz.png" class="flag-img" alt="New Zealand"><span class="country-name">New Zealand (NZ$ NZD)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('NZD', 'https://flagcdn.com/w20/nz.png', event)">
+                    <img src="https://flagcdn.com/w20/nz.png" class="flag-img" alt="New Zealand"><span class="country-name">New Zealand (NZ$ NZD)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('CHF', 'https://flagcdn.com/w20/ch.png')">
-                    <img src="https://flagcdn.com/w20/ch.png" class="flag-img" alt="Switzerland"><span class="country-name">Switzerland (CHF)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('CHF', 'https://flagcdn.com/w20/ch.png', event)">
+                    <img src="https://flagcdn.com/w20/ch.png" class="flag-img" alt="Switzerland"><span class="country-name">Switzerland (CHF)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('HKD', 'https://flagcdn.com/w20/hk.png')">
-                    <img src="https://flagcdn.com/w20/hk.png" class="flag-img" alt="Hong Kong"><span class="country-name">Hong Kong ($ HKD)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('HKD', 'https://flagcdn.com/w20/hk.png', event)">
+                    <img src="https://flagcdn.com/w20/hk.png" class="flag-img" alt="Hong Kong"><span class="country-name">Hong Kong ($ HKD)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('MYR', 'https://flagcdn.com/w20/my.png')">
-                    <img src="https://flagcdn.com/w20/my.png" class="flag-img" alt="Malaysia"><span class="country-name">Malaysia (RM MYR)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('MYR', 'https://flagcdn.com/w20/my.png', event)">
+                    <img src="https://flagcdn.com/w20/my.png" class="flag-img" alt="Malaysia"><span class="country-name">Malaysia (RM MYR)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('SAR', 'https://flagcdn.com/w20/sa.png')">
-                    <img src="https://flagcdn.com/w20/sa.png" class="flag-img" alt="Saudi Arabia"><span class="country-name">Saudi Arabia (SAR)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('SAR', 'https://flagcdn.com/w20/sa.png', event)">
+                    <img src="https://flagcdn.com/w20/sa.png" class="flag-img" alt="Saudi Arabia"><span class="country-name">Saudi Arabia (SAR)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('ZAR', 'https://flagcdn.com/w20/za.png')">
-                    <img src="https://flagcdn.com/w20/za.png" class="flag-img" alt="South Africa"><span class="country-name">South Africa (R ZAR)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('ZAR', 'https://flagcdn.com/w20/za.png', event)">
+                    <img src="https://flagcdn.com/w20/za.png" class="flag-img" alt="South Africa"><span class="country-name">South Africa (R ZAR)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('KRW', 'https://flagcdn.com/w20/kr.png')">
-                    <img src="https://flagcdn.com/w20/kr.png" class="flag-img" alt="South Korea"><span class="country-name">South Korea (₩ KRW)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('KRW', 'https://flagcdn.com/w20/kr.png', event)">
+                    <img src="https://flagcdn.com/w20/kr.png" class="flag-img" alt="South Korea"><span class="country-name">South Korea (₩ KRW)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('MXN', 'https://flagcdn.com/w20/mx.png')">
-                    <img src="https://flagcdn.com/w20/mx.png" class="flag-img" alt="Mexico"><span class="country-name">Mexico ($ MXN)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('MXN', 'https://flagcdn.com/w20/mx.png', event)">
+                    <img src="https://flagcdn.com/w20/mx.png" class="flag-img" alt="Mexico"><span class="country-name">Mexico ($ MXN)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('BRL', 'https://flagcdn.com/w20/br.png')">
-                    <img src="https://flagcdn.com/w20/br.png" class="flag-img" alt="Brazil"><span class="country-name">Brazil (R$ BRL)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('BRL', 'https://flagcdn.com/w20/br.png', event)">
+                    <img src="https://flagcdn.com/w20/br.png" class="flag-img" alt="Brazil"><span class="country-name">Brazil (R$ BRL)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
-                <div class="dropdown-item" onclick="selectCurrency('SEK', 'https://flagcdn.com/w20/se.png')">
-                    <img src="https://flagcdn.com/w20/se.png" class="flag-img" alt="Sweden"><span class="country-name">Sweden (kr SEK)</span><span class="checkmark">✓</span>
+                <div class="dropdown-item" role="menuitem" onclick="selectCurrency('SEK', 'https://flagcdn.com/w20/se.png', event)">
+                    <img src="https://flagcdn.com/w20/se.png" class="flag-img" alt="Sweden"><span class="country-name">Sweden (kr SEK)</span><span class="checkmark" aria-hidden="true">✓</span>
                 </div>
             </div>
         </div>
@@ -129,10 +129,10 @@
                             <label>LOAN AMOUNT (<span class="currSymbol">₹</span>)</label>
                             <div class="input-wrapper">
                                 <span class="currSymbol">₹</span>
-                                <input type="number" id="loanValue" class="value-input" value="200000" style="width: 120px;">
+                                <input type="number" id="loanValue" class="value-input" value="200000" style="width: 120px;" aria-label="Loan Amount Input">
                             </div>
                         </div>
-                        <input type="range" id="loan" min="10000" max="500000000" step="5000" value="200000">
+                        <input type="range" id="loan" min="10000" max="500000000" step="5000" value="200000" aria-label="Loan Amount Slider">
                         <div class="range-labels">
                             <span>10K</span>
                             <span id="maxLabel">50Cr</span>
@@ -142,22 +142,22 @@
                         <div class="label-row">
                             <label>INTEREST RATE (% p.a.)</label>
                             <div class="input-wrapper">
-                                <input type="number" id="rateValue" class="value-input" value="11.5" step="0.1">
+                                <input type="number" id="rateValue" class="value-input" value="11.5" step="0.1" aria-label="Interest Rate Value">
                                 <span>%</span>
                             </div>
                         </div>
-                        <input type="range" id="rate" min="8" max="36" step="0.1" value="11.5">
+                        <input type="range" id="rate" min="8" max="36" step="0.1" value="11.5" aria-label="Interest Rate Slider">
                         <div class="range-labels"><span>8%</span><span>36%</span></div>
                     </div>
                     <div class="input-group">
                         <div class="label-row">
                             <label>LOAN TENURE (YEARS)</label>
                             <div class="input-wrapper">
-                                <input type="number" id="timeValue" class="value-input" value="3">
+                                <input type="number" id="timeValue" class="value-input" value="3" aria-label="Loan Tenure Value">
                                 <span>Yr</span>
                             </div>
                         </div>
-                        <input type="range" id="time" min="1" max="7" step="1" value="3">
+                        <input type="range" id="time" min="1" max="7" step="1" value="3" aria-label="Loan Tenure Slider">
                         <div class="range-labels"><span>1 Yr</span><span>7 Yrs</span></div>
                     </div>
                 </div>
@@ -167,18 +167,18 @@
                 <span class="card-subtitle">YOUR EMI DETAILS</span>
                 <p class="emi-title">Monthly EMI</p>
                 <h2 id="result">₹0.00</h2>
-                <div class="chart-box" style="max-width: 220px; margin: 15px auto;"><canvas id="myChart"></canvas></div>
+                <div class="chart-box" style="max-width: 220px; margin: 15px auto;"><canvas id="myChart" aria-label="EMI Breakdown Chart" role="img"></canvas></div>
                 <div class="summary-list">
                     <div class="summary-item"><span>Principal Amount</span><strong id="principalText">₹0.00</strong></div>
                     <div class="summary-item"><span>Total Interest</span><strong id="interestText">₹0.00</strong></div>
                     <div class="summary-item total"><span>Total Amount Payable</span><strong id="paymentText">₹0.00</strong></div>
                 </div>
                 <div style="margin-top: 15px; margin-bottom: 15px;">
-                    <button onclick="shareCalculator()" style="width: 100%; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">🔗 Share Calculator</button>
+                    <button onclick="shareCalculator()" style="width: 100%; padding: 10px; background: #16a34a; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;" aria-label="Share Calculator">🔗 Share Calculator</button>
                 </div>
                 <div class="schedule-main-header">
                     <p class="amort-header-title">Your Amortization Details (Yearly/Monthly)</p>
-                    <button id="toggleAmortBtn" class="toggle-amort-btn" onclick="toggleAmortSection()"><span id="amortIcon" class="circle-icon">+</span></button>
+                    <button id="toggleAmortBtn" class="toggle-amort-btn" onclick="toggleAmortSection()" aria-label="Toggle Amortization Details"><span id="amortIcon" class="circle-icon" aria-hidden="true">+</span></button>
                 </div>
             </div>
         </div>
@@ -186,13 +186,14 @@
         <!-- Amortization Section -->
         <div id="amortContent" class="schedule-section" style="display: none;">
             <div id="scheduleContainer" class="schedule-container"></div>
-            <div id="loadMoreBox" class="load-more-box" style="display: none;"><button class="btn-load-more" onclick="loadMoreYears()">Load More</button></div>
+            <div id="loadMoreBox" class="load-more-box" style="display: none;"><button class="btn-load-more" onclick="loadMoreYears()" aria-label="Load More Years">Load More</button></div>
         </div>
 
         <!-- SEO Article & Guide Section -->
         <section class="seo-article" style="margin-top: 50px; padding: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); line-height: 1.7; color: #444;">
             <h2 style="color: #1a202c; margin-bottom: 15px;">What is a Personal Loan EMI?</h2>
-            <p style="margin-bottom: 20px;">A Personal Loan is an unsecured form of credit, which means you do not provide collateral or security against the borrowed sum. Because of higher lending risk, personal loan interest rates are typically higher (ranging from 10.5% to 28% p.a.) than secured loans.</p>
+            <p style="margin-bottom: 20px;">Because personal loans are unsecured, planning your budget using an <strong>instant personal loan emi calculator with low interest</strong> ensures you understand the complete <strong>unsecured personal loan repayment schedule</strong> before signing with any lender. A Personal Loan is an unsecured form of credit, which means you do not provide collateral or security against the borrowed sum. Because of higher lending risk, personal loan interest rates are typically higher (ranging from 10.5% to 28% p.a.) than secured loans.</p>
+            <p style="margin-bottom: 20px;">Looking for alternative calculators? You can check out our <a href="index.html" style="color: #2563eb; text-decoration: none;">Home Loan EMI Calculator</a> or our <a href="car-loan-emi-calculator.html" style="color: #2563eb; text-decoration: none;">Car Loan EMI Calculator</a>.</p>
 
             <h3 style="color: #2d3748; margin-top: 25px; margin-bottom: 10px;">Factors That Determine Your Monthly Outflow</h3>
             <ul style="margin-left: 20px; margin-bottom: 20px;">
@@ -238,8 +239,7 @@
                         else if (countryCode === 'CA') { currency = 'CAD'; flagUrl = 'https://flagcdn.com/w20/ca.png'; }
                         else if (countryCode === 'AUD') { currency = 'AUD'; flagUrl = 'https://flagcdn.com/w20/au.png'; }
                         else if (countryCode === 'AE') { currency = 'AED'; flagUrl = 'https://flagcdn.com/w20/ae.png'; }
-                        else if (countryCode === 'SG') { currency = 'SGD'; flagUrl = 'https://flagcdn.com/w20/sg.png'; }
-                        else if (countryCode === 'JP') { currency = 'JPY'; flagUrl = 'https://flagcdn.com/w20/jp.png'; }
+                        else if (countryCode === 'JS') { currency = 'JPY'; flagUrl = 'https://flagcdn.com/w20/jp.png'; }
                         else if (countryCode === 'NZ') { currency = 'NZD'; flagUrl = 'https://flagcdn.com/w20/nz.png'; }
                         else if (countryCode === 'CH') { currency = 'CHF'; flagUrl = 'https://flagcdn.com/w20/ch.png'; }
                         else if (countryCode === 'HK') { currency = 'HKD'; flagUrl = 'https://flagcdn.com/w20/hk.png'; }
@@ -248,6 +248,7 @@
                         else if (countryCode === 'ZAR') { currency = 'ZAR'; flagUrl = 'https://flagcdn.com/w20/za.png'; }
                         else if (countryCode === 'KR') { currency = 'KRW'; flagUrl = 'https://flagcdn.com/w20/kr.png'; }
                         else if (countryCode === 'MXN') { currency = 'MXN'; flagUrl = 'https://flagcdn.com/w20/mx.png'; }
+                        else if (countryCode::includes('MX')) { currency = 'MXN'; flagUrl = 'https://flagcdn.com/w20/mx.png'; }
                         else if (countryCode === 'BRL') { currency = 'BRL'; flagUrl = 'https://flagcdn.com/w20/br.png'; }
                         else if (countryCode === 'SEK') { currency = 'SEK'; flagUrl = 'https://flagcdn.com/w20/se.png'; }
                         else if (['DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'PT', 'GR', 'FI', 'IE'].includes(countryCode)) { 
@@ -258,7 +259,7 @@
                             selectCurrency(currency, flagUrl);
                         }
                     })
-                    .catch(err => console.log('IP Location detection skipped'));
+                    .catch(files => console.log('IP Location detection skipped'));
             }, 800);
         });
     </script>
