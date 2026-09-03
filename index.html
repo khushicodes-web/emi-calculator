@@ -666,5 +666,44 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Auto-detect user country and set currency on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(data => {
+                    const countryCode = data.country_code; 
+                    let currency = 'INR';
+                    let flagUrl = 'https://flagcdn.com/w20/in.png';
+
+                    if (countryCode === 'US') { currency = 'USD'; flagUrl = 'https://flagcdn.com/w20/us.png'; }
+                    else if (countryCode === 'GB') { currency = 'GBP'; flagUrl = 'https://flagcdn.com/w20/gb.png'; }
+                    else if (countryCode === 'TH') { currency = 'THB'; flagUrl = 'https://flagcdn.com/w20/th.png'; }
+                    else if (countryCode === 'CA') { currency = 'CAD'; flagUrl = 'https://flagcdn.com/w20/ca.png'; }
+                    else if (countryCode === 'AU') { currency = 'AUD'; flagUrl = 'https://flagcdn.com/w20/au.png'; }
+                    else if (countryCode === 'AE') { currency = 'AED'; flagUrl = 'https://flagcdn.com/w20/ae.png'; }
+                    else if (countryCode === 'SG') { currency = 'SGD'; flagUrl = 'https://flagcdn.com/w20/sg.png'; }
+                    else if (countryCode === 'JP') { currency = 'JPY'; flagUrl = 'https://flagcdn.com/w20/jp.png'; }
+                    else if (countryCode === 'NZ') { currency = 'NZD'; flagUrl = 'https://flagcdn.com/w20/nz.png'; }
+                    else if (countryCode === 'CH') { currency = 'CHF'; flagUrl = 'https://flagcdn.com/w20/ch.png'; }
+                    else if (countryCode === 'HK') { currency = 'HKD'; flagUrl = 'https://flagcdn.com/w20/hk.png'; }
+                    else if (countryCode === 'MY') { currency = 'MYR'; flagUrl = 'https://flagcdn.com/w20/my.png'; }
+                    else if (countryCode === 'SA') { currency = 'SAR'; flagUrl = 'https://flagcdn.com/w20/sa.png'; }
+                    else if (countryCode === 'ZA') { currency = 'ZAR'; flagUrl = 'https://flagcdn.com/w20/za.png'; }
+                    else if (countryCode === 'KR') { currency = 'KRW'; flagUrl = 'https://flagcdn.com/w20/kr.png'; }
+                    else if (countryCode === 'MX') { currency = 'MXN'; flagUrl = 'https://flagcdn.com/w20/mx.png'; }
+                    else if (countryCode === 'BR') { currency = 'BRL'; flagUrl = 'https://flagcdn.com/w20/br.png'; }
+                    else if (countryCode === 'SE') { currency = 'SEK'; flagUrl = 'https://flagcdn.com/w20/se.png'; }
+                    else if (['DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'PT', 'GR', 'FI', 'IE'].includes(countryCode)) { 
+                        currency = 'EUR'; flagUrl = 'https://flagcdn.com/w20/eu.png'; 
+                    }
+
+                    if (typeof selectCurrency === 'function') {
+                        selectCurrency(currency, flagUrl);
+                    }
+                })
+                .catch(err => console.log('IP Location detection skipped:', err));
+        });
+    </script>
 </body>
 </html>
