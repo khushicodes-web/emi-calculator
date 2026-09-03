@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global EMI Calculator - Calculate Home, Car & Personal Loan EMIs</title>
+    <title>EMICalculator4u - Free Global Loan & EMI Calculator</title>
     <meta name="description" content="Calculate monthly EMI, total interest, and complete repayment schedules for home, car, personal, and education loans with interactive visual graphs.">
     
     <meta name="google-site-verification" content="oCzXDD2KL8-WKKnEMrqofvCWKQE7dC-ELX6yTNx5FTs" />
@@ -16,7 +16,7 @@
     <link rel="preload" href="logo.png" as="image" type="image/png">
     <link rel="canonical" href="https://emicalculator4u.com/">
     
-    <meta property="og:title" content="Global EMI Calculator - Free Loan Payment Tool">
+    <meta property="og:title" content="EMICalculator4u - Free Loan Payment Tool">
     <meta property="og:description" content="Calculate your loan EMIs and check interest amortization schedules instantly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://emicalculator4u.com/">
@@ -380,7 +380,7 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Global EMI Calculator",
+      "name": "EMICalculator4u",
       "url": "https://emicalculator4u.com/",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
@@ -670,7 +670,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Non-blocking deferred Geo-IP detection to preserve PageSpeed LCP score
         window.addEventListener('load', () => {
             setTimeout(() => {
                 fetch('https://ipapi.co/json/')
@@ -691,7 +690,7 @@
                         else if (countryCode === 'NZ') { currency = 'NZD'; flagUrl = 'https://flagcdn.com/w20/nz.png'; }
                         else if (countryCode === 'CH') { currency = 'CHF'; flagUrl = 'https://flagcdn.com/w20/ch.png'; }
                         else if (countryCode === 'HK') { currency = 'HKD'; flagUrl = 'https://flagcdn.com/w20/hk.png'; }
-                        file:// else if (countryCode === 'MY') { currency = 'MYR'; flagUrl = 'https://flagcdn.com/w20/my.png'; }
+                        else if (countryCode === 'MY') { currency = 'MYR'; flagUrl = 'https://flagcdn.com/w20/my.png'; }
                         else if (countryCode === 'SAR') { currency = 'SAR'; flagUrl = 'https://flagcdn.com/w20/sa.png'; }
                         else if (countryCode === 'ZAR') { currency = 'ZAR'; flagUrl = 'https://flagcdn.com/w20/za.png'; }
                         else if (countryCode === 'KR') { currency = 'KRW'; flagUrl = 'https://flagcdn.com/w20/kr.png'; }
@@ -707,7 +706,7 @@
                         }
                     })
                     .catch(err => console.log('IP Location detection skipped'));
-            }, 800); // 0.8s delay ensures zero impact on Lighthouse mobile score
+            }, 800);
         });
     </script>
 </body>
