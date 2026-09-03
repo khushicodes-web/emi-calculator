@@ -102,8 +102,12 @@ function selectCurrency(code, flagImgUrl, event) {
     if (flagElem) flagElem.src = flagImgUrl;
     if (codeElem) codeElem.innerText = code;
 
+    // Dynamically update active class across all dropdown items so the checkmark moves correctly
     document.querySelectorAll(".dropdown-item").forEach(item => {
         item.classList.remove("active");
+        if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(`'${code}'`)) {
+            item.classList.add("active");
+        }
     });
     
     if (event && event.currentTarget) {
